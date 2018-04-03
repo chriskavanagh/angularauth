@@ -1,0 +1,15 @@
+<div *ngIf="ninja" class="d-flex justify-content-center" id="topPage">
+    <h1>Ninjadetails Component</h1>
+</div>
+<div id="bottomPage">
+    <div class="d-flex flex-column align-items-center">
+        <h1 id="ninjaName">My Name Is {{ ninjaName }}</h1>      
+        <h3>You selected Ninja with name {{ ninja.name }} </h3>      
+        <h3>{{ ninja.name }} is a {{ ninja.rank }}</h3>
+        
+        <div id="zoomDiv" class="zoom">
+            <a (click)="goToNinjas()" >Back To Ninja List</a>
+        <!--<a [routerLink]="['/']" class="zoom">Back To Ninja List</a>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+#topPage {
+    margin: 75px 0;
+}
+
+#bottomPage {
+    margin: 75px 0;
+}
+
+.zoom {
+    padding: 10px;
+    background-color: #BEBEBE;
+    transition: transform .2s; /* Animation */ 
+    margin: 0 auto;   
+}
+.zoom:hover {
+    transform: scale(1.2);
+}
+
+#ninjaName {
+    margin-bottom: 45px;
+}
+
+#zoomDiv {
+    margin-top: 15px;
+}
+
+#zoomDiv a {
+    color: #003366;
+}
+

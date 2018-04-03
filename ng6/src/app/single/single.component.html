@@ -1,0 +1,13 @@
+<div class="container">  
+
+  <h1 class="display-4">Ninja</h1>
+  <!--<button class="btn btn-primary mx-1" (click)="showNinjas()">Get Ninjas</button>-->
+  <!--no need for button, function in onInIt method-->
+  
+  
+      <div class="row justify-content-md-center">
+        <div *ngIf="ninja">
+          <h2>{{ ninja.name }} (<em>{{ ninja.rank }}</em>)</h2>          
+        </div>
+      </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">  
+
+  <div class="d-flex justify-content-center">
+    <h1 id="head" class="display-4">Ninja List</h1>
+    <!--<button class="btn btn-primary mx-1" (click)="showNinjas()">Get Ninjas</button>-->
+    <!--no need for button, function in onInIt method-->
+  </div>
+  <hr>
+
+  <div class="row justify-content-md-center">
+    <ul class="list-group">
+      <!--this is a problem-->          
+      <li *ngFor="let ninja of ninjas" class="list-group-item zoom" (click)="onSelect(ninja)">
+          {{ ninja.name }} - {{ ninja.rank }}              
+      </li>
+    </ul>
+  </div>
+  
+  
+      <!-- <div class="row justify-content-md-center">
+        <ul class="list-group">                    
+          <li *ngFor="let ninja of ninjas" class="list-group-item" (click)="onSelect(ninja)">
+            <a routerLink="/ninja/{{ ninja.name }}">{{ ninja.name }} - {{ ninja.rank }}</a>              
+          </li>
+        </ul>
+      </div> -->
+      
+</div>
+      
+

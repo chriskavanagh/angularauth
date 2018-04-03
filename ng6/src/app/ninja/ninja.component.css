@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+  }
+  
+  ul>li {
+      margin-bottom: 5px;
+      color: #003366;
+  }
+
+.zoom {
+    background-color: #BEBEBE;
+    transition: transform .2s; /* Animation */    
+    /*margin: 0 auto;*/
+}
+
+.zoom:hover {
+    transform: scale(1.2);
+}
+
+.row {
+    margin-bottom:75px;
+}
+
+#head {
+    margin-top: 50px;
+}
+
+hr {
+    margin-bottom: 75px;
+}
