@@ -30,6 +30,21 @@ router.post('/register', function(req, res, next) {
    });
 });
 
+// Verify password with callback => Valid (callback) 
+/* User.verifyPassword('mySecretPassword', function(err, valid) {
+    if (err) {
+      console.log(err)
+    } else if (valid) {
+      console.log('Valid (callback)');
+    } else {
+      console.log('Invalid (callback)');
+    }
+  }); */
+
+
+module.exports = router;
+
+
 /* router.post('/register', function(req, res, next) {
     User.create({email: req.body.email, password: req.body.password},(err, user)=>{
     if(err){
@@ -38,9 +53,6 @@ router.post('/register', function(req, res, next) {
     res.status(201).send(user);
    });
 }); */ 
-
-
-module.exports = router;
 
 
 // alternate way to create obj with constructor.

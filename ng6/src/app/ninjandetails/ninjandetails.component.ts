@@ -10,10 +10,9 @@ import { Ininja } from './../ininja';
   styleUrls: ['./ninjandetails.component.css']
 })
 export class NinjandetailsComponent implements OnInit {
-  //@ Input() ninja: Ininja;
     ninja: Ininja;
     ninjaName: string;
-    //ninjaRank: string;
+    
 
   constructor(
         private route: ActivatedRoute,
@@ -22,22 +21,22 @@ export class NinjandetailsComponent implements OnInit {
       ) { }
 
   ngOnInit() {
-    this.dataService.currentNinja.subscribe(
-      (data) => {this.ninja = data}
-    );
-    //let name = this.route.snapshot.paramMap.get('name');
-    //this.ninjaName = name;
-    this.route.paramMap.subscribe(
-      (params: ParamMap) => {
-      let name = params.get('name');
-      console.log(`I am the params ${name}`);
-      this.ninjaName = name;
-    });
+      this.dataService.currentNinja.subscribe(
+        (data) => {this.ninja = data}
+      );
+      //let name = this.route.snapshot.paramMap.get('name');
+      //this.ninjaName = name;
+      this.route.paramMap.subscribe(
+        (params: ParamMap) => {
+        let name = params.get('name');
+        console.log(`I am the params ${name}`);
+        this.ninjaName = name;
+      });
   }
 
   goToNinjas():void {    
-    this.router.navigate(['/ninjas']);
-    // or 'this.location.back();'
-  }
+      this.router.navigate(['/ninjas']);
+      // or 'this.location.back();'
+    }
 
 }

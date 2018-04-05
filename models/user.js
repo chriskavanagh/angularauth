@@ -17,26 +17,17 @@ const UserSchema = new Schema({
     }    
 }); // end UserSchema
 
-//authenticate input against database
-/* UserSchema.statics.authenticate = function (email, password, callback) {
-    User.findOne({ email: email })
-      .exec(function (err, user) {
-        if (err) {
-          return callback(err)
-        } else if (!user) {
-          var err = new Error('User not found.');
-          err.status = 401;
-          return callback(err);
-        }
-        bcrypt.compare(password, user.password, function (err, result) {
-          if (result === true) {
-            return callback(null, user);
-          } else {
-            return callback();
-          }
-        })
-      });
-  }; */
+
+// Verify password with callback => Valid (callback) 
+/* User.verifyPassword('mySecretPassword', function(err, valid) {
+  if (err) {
+    console.log(err)
+  } else if (valid) {
+    console.log('Valid (callback)');
+  } else {
+    console.log('Invalid (callback)');
+  }
+}); */
 
 UserSchema.plugin(require('mongoose-bcrypt')); // from mongoos-bcrypt docs
 module.exports = mongoose.model('User', UserSchema);
