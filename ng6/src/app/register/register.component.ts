@@ -7,7 +7,11 @@ import { RegisterService } from './../register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {  
+
+export class RegisterComponent implements OnInit {
+  
+  available: boolean = false;
+  emailCheck: string;
 
   registerUserData = {
     email: undefined,
@@ -17,6 +21,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, public registerService: RegisterService) { }
 
   ngOnInit() {
+    this.checkEmail();
   }
 
   signUpUser():void {
@@ -25,6 +30,14 @@ export class RegisterComponent implements OnInit {
       data => console.log(data)
     );
     //this.router.navigate(['/ninjas']);
+  }
+
+  checkEmail() {
+    if (this.available) {
+      this.emailCheck = "Email Available";
+    } else {
+      this.emailCheck = "Email Not Available";
+    }
   }
 
 }

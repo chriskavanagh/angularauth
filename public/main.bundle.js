@@ -337,7 +337,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 //import 'rxjs/add/operator/switchMap';
 var NinjandetailsComponent = /** @class */ (function () {
-    //ninjaRank: string;
     function NinjandetailsComponent(route, dataService, router) {
         this.route = route;
         this.dataService = dataService;
@@ -494,7 +493,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header\">\n          <h3 class=\"mb-0\">Register</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" [(ngModel)]=\"registerUserData.email\" name=\"email\" class=\"form-control rounded-0\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" [(ngModel)]=\"registerUserData.password\" name=\"password\" class=\"form-control rounded-0\"  required>\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n\n\n  </div>\n</div>"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mx-auto\">Register</h3> <!-- or \"text-center\" instead of d-flex justify-content-center-->\n        </div>\n        <div class=\"card-body\">\n          <form #userForm=\"ngForm\" class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"email\">Email</label>\n              <input type=\"text\" [(ngModel)]=\"registerUserData.email\" name=\"email\" id=\"email\" class=\"form-control rounded-0\" required>\n              <div *ngIf=\"available\">\n                <span>{{ emailCheck }}</span>\n            </div>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" [(ngModel)]=\"registerUserData.password\" name=\"password\" id=\"password\" class=\"form-control rounded-0\" required>\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -522,17 +521,27 @@ var RegisterComponent = /** @class */ (function () {
     function RegisterComponent(router, registerService) {
         this.router = router;
         this.registerService = registerService;
+        this.available = false;
         this.registerUserData = {
             email: undefined,
             password: undefined
         };
     }
     RegisterComponent.prototype.ngOnInit = function () {
+        this.checkEmail();
     };
     RegisterComponent.prototype.signUpUser = function () {
         this.registerService.registerUser(this.registerUserData)
             .subscribe(function (data) { return console.log(data); });
         //this.router.navigate(['/ninjas']);
+    };
+    RegisterComponent.prototype.checkEmail = function () {
+        if (this.available) {
+            this.emailCheck = "Email Available";
+        }
+        else {
+            this.emailCheck = "Email Not Available";
+        }
     };
     RegisterComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

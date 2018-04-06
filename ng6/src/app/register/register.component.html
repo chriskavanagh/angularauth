@@ -5,18 +5,21 @@
 
       <!-- form card login -->
       <div class="card rounded-0">
-        <div class="card-header">
-          <h3 class="mb-0">Register</h3>
+        <div class="card-header d-flex justify-content-center">
+          <h3 class="mx-auto">Register</h3> <!-- or "text-center" instead of d-flex justify-content-center-->
         </div>
         <div class="card-body">
-          <form class="form">
+          <form #userForm="ngForm" class="form">
             <div class="form-group">
-              <label for="uname1">Username</label>
-              <input type="text" [(ngModel)]="registerUserData.email" name="email" class="form-control rounded-0" required>
+              <label for="email">Email</label>
+              <input type="text" [(ngModel)]="registerUserData.email" name="email" id="email" class="form-control rounded-0" required>
+              <div *ngIf="available">
+                <span>{{ emailCheck }}</span>
+            </div>
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" [(ngModel)]="registerUserData.password" name="password" class="form-control rounded-0"  required>
+              <input type="password" [(ngModel)]="registerUserData.password" name="password" id="password" class="form-control rounded-0" required>
             </div>
             <button type="button" (click)="signUpUser()" class="btn btn-primary btn-block">Register</button>
           </form>
@@ -24,9 +27,6 @@
         <!--/card-block-->
       </div>
       <!-- /form card login -->
-
     </div>
-
-
   </div>
 </div>

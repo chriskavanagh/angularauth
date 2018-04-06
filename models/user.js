@@ -18,16 +18,6 @@ const UserSchema = new Schema({
 }); // end UserSchema
 
 
-// Verify password with callback => Valid (callback) 
-/* User.verifyPassword('mySecretPassword', function(err, valid) {
-  if (err) {
-    console.log(err)
-  } else if (valid) {
-    console.log('Valid (callback)');
-  } else {
-    console.log('Invalid (callback)');
-  }
-}); */
 
 UserSchema.plugin(require('mongoose-bcrypt')); // from mongoos-bcrypt docs
 module.exports = mongoose.model('User', UserSchema);

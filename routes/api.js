@@ -5,12 +5,11 @@ const Ninja = require('../models/ninja');
 
 
 
-// body-parser middleware.
+/* body-parser middleware. */
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 
 /* api routes */
-
 router.get('/', function(req, res, next){
     Ninja.find({}, 'name rank available date', function(err, ninjas){
         if(err){

@@ -7,8 +7,6 @@ const User = require('../models/user.js');
 /* body-parser middleware.*/
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
-
-
 /* ----------------------- */
 
 router.get('/', function(req, res, next){
@@ -21,14 +19,53 @@ router.get('/', function(req, res, next){
 });
 
 
+/* check if email exists during registration (use angular service) Use on email field [(ngModel)] use (keyup)*/
+router.post('/email-check', (req, res, next) => {
+	let useremail = req.body.email;
+	User.findOne({'email': useremail}, 'email', (err, user) => {
+		if(err) {
+			res.status(400).send({error: err.message});
+		}
+		if(user) {
+			res.send(`Email In Use, Choose Another ${user}`);
+		} else {
+			res.send(`Email Available`);
+		}
+	});
+});
+
+
+// MAYBE WORKING!!!! Check In Angular!!!
 router.post('/register', function(req, res, next) {
+    let email = req.body.email;
+    User.findOne({'email': email}, 'email', (err, user) => {
+        if (!user) {
+            User.create(req.body, (err, user) => {
+                if(err){
+                    return res.status(500).json({error: err});
+                }
+                res.status(201).send(user);
+            });
+          } else {
+            res.status(500).json("Email Already Exists!");
+        }        
+    });    
+});
+
+
+module.exports = router;
+
+
+
+/* router.post('/register', function(req, res, next) {
     User.create(req.body, (err, user) => {
     if(err){
         return res.status(500).json({error: err});
     }
     res.status(201).send(user);
    });
-});
+}); */
+
 
 // Verify password with callback => Valid (callback) 
 /* User.verifyPassword('mySecretPassword', function(err, valid) {
@@ -40,9 +77,6 @@ router.post('/register', function(req, res, next) {
       console.log('Invalid (callback)');
     }
   }); */
-
-
-module.exports = router;
 
 
 /* router.post('/register', function(req, res, next) {
