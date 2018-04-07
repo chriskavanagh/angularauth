@@ -7,7 +7,7 @@ const User = require('../models/user.js');
 /* body-parser middleware.*/
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
-/* ----------------------- */
+/* ---------------------- */
 
 router.get('/', function(req, res, next){
     User.find({}, 'email', function(err, users){
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next){
 });
 
 
-/* check if email exists during registration (use angular service) Use on email field [(ngModel)] use (keyup)*/
+/* route checks if email exists */
 router.post('/email-check', (req, res, next) => {
     let useremail = req.body.email;
     console.log(useremail);

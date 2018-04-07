@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     password: undefined
   };
 
-  constructor(private router: Router, public registerService: RegisterService) { }
+  constructor(private router: Router, private registerService: RegisterService) { }
 
   ngOnInit() {
   }
