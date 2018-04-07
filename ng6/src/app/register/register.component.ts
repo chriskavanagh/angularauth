@@ -7,12 +7,10 @@ import { RegisterService } from './../register.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-
 export class RegisterComponent implements OnInit {
-  
-  available: boolean = false;
+
   emailCheck: string;
-  email: string;
+  emailMessage: string;
 
   registerUserData = {
     email: undefined,
@@ -22,7 +20,6 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router, public registerService: RegisterService) { }
 
   ngOnInit() {
-    this.checkEmail();
   }
 
   signUpUser():void {
@@ -36,16 +33,8 @@ export class RegisterComponent implements OnInit {
   checkEmail():void {
     this.registerService.checkUserEmail(this.registerUserData)
     .subscribe(
-      data => console.log(data)
+      data => this.emailMessage = data.message
     );
   }
-
-  /* checkEmail() {
-    if (this.available) {
-      this.emailCheck = "Email Available";
-    } else {
-      this.emailCheck = "Email Not Available";
-    }
-  } */
 
 }
