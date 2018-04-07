@@ -9,8 +9,9 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 /* ---------------------- */
 
+/* route gets all user */
 router.get('/', function(req, res, next){
-    User.find({}, 'email', function(err, users){
+    User.find({}, 'email', (err, users) => {
         if(err){
             res.json({err: err.message, msg:'Failed to find users'});
         }

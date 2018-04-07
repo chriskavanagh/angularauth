@@ -484,7 +484,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "span {\r\n    margin-top: 5px;\r\n}", ""]);
+exports.push([module.i, "span {\r\n    display:inline-block;\r\n    margin-top: 5px;\r\n    font-weight: 700;    \r\n    font-style: italic;\r\n}", ""]);
 
 // exports
 
@@ -497,7 +497,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mx-auto\">Register</h3> <!-- or \"text-center\" instead of d-flex justify-content-center-->\n        </div>\n        <div class=\"card-body\">\n          <form #userForm=\"ngForm\" class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"email\">Email</label>\n              <input type=\"text\" (keyup)=\"checkEmail()\" [(ngModel)]=\"registerUserData.email\" name=\"email\" id=\"email\" class=\"form-control rounded-0\" required>\n              \n                <span>{{ emailMessage }}</span>\n            \n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" [(ngModel)]=\"registerUserData.password\" name=\"password\" id=\"password\" class=\"form-control rounded-0\" required>\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mx-auto text-warning\">Register</h3> <!-- or \"text-center\" instead of d-flex justify-content-center-->\n        </div>\n        <div class=\"card-body\">\n          <form #userForm=\"ngForm\" class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"email\">Email</label>\n              <input type=\"text\" (keyup)=\"checkEmail()\" [(ngModel)]=\"registerUserData.email\" name=\"email\" id=\"email\" class=\"form-control rounded-0\" required>              \n                <span class=\"text-warning\">{{ emailMessage }}</span>            \n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" [(ngModel)]=\"registerUserData.password\" name=\"password\" id=\"password\" class=\"form-control rounded-0\" required>\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
