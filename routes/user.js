@@ -21,15 +21,16 @@ router.get('/', function(req, res, next){
 
 /* check if email exists during registration (use angular service) Use on email field [(ngModel)] use (keyup)*/
 router.post('/email-check', (req, res, next) => {
-	let useremail = req.body.email;
+    let useremail = req.body.email;
+    console.log(useremail);
 	User.findOne({'email': useremail}, 'email', (err, user) => {
 		if(err) {
 			res.status(400).send({error: err.message});
 		}
 		if(user) {
-			res.send(`Email In Use, Choose Another ${user}`);
+			res.json({message: "Email Is Not Available", available: false});
 		} else {
-			res.send(`Email Available`);
+			res.json({message: "Email Is Available", available: true});
 		}
 	});
 });

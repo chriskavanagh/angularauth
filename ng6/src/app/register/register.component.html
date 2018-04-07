@@ -12,7 +12,7 @@
           <form #userForm="ngForm" class="form">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" [(ngModel)]="registerUserData.email" name="email" id="email" class="form-control rounded-0" required>
+              <input type="text" (keyup)="checkEmail(registerUserData.email)" [(ngModel)]="registerUserData.email" name="email" id="email" class="form-control rounded-0" required>
               <div *ngIf="available">
                 <span>{{ emailCheck }}</span>
             </div>

@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   
   available: boolean = false;
   emailCheck: string;
+  email: string;
 
   registerUserData = {
     email: undefined,
@@ -32,12 +33,19 @@ export class RegisterComponent implements OnInit {
     //this.router.navigate(['/ninjas']);
   }
 
-  checkEmail() {
+  checkEmail():void {
+    this.registerService.checkUserEmail(this.registerUserData)
+    .subscribe(
+      data => console.log(data)
+    );
+  }
+
+  /* checkEmail() {
     if (this.available) {
       this.emailCheck = "Email Available";
     } else {
       this.emailCheck = "Email Not Available";
     }
-  }
+  } */
 
 }

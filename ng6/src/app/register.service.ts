@@ -7,11 +7,16 @@ import { User } from './user';
 export class RegisterService {
 
   _url: string = 'http://localhost:4000/user/register';
+  _emailurl: string = 'http://localhost:4000/user/email-check';
 
   constructor(public http: HttpClient) { }
 
   registerUser(user: User): Observable<User> {
     return this.http.post<User>(this._url, user);
+  }
+
+  checkUserEmail(email: any): Observable<any> {
+    return this.http.post<any>(this. _emailurl, email);
   }
 
 }
