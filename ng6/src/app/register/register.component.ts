@@ -9,10 +9,10 @@ import { RegisterService } from './../register.service';
 })
 export class RegisterComponent implements OnInit {
 
-  emailCheck: string;
   emailMessage: string;
+  available: boolean;
 
-  registerUserData = {
+  model = {
     email: undefined,
     password: undefined
   };
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signUpUser():void {
-    this.registerService.registerUser(this.registerUserData)
+    this.registerService.registerUser(this.model)
     .subscribe(
       data => console.log(data)
     );
@@ -31,9 +31,12 @@ export class RegisterComponent implements OnInit {
   }
 
   checkEmail():void {
-    this.registerService.checkUserEmail(this.registerUserData)
+    this.registerService.checkUserEmail(this.model)
     .subscribe(
-      data => this.emailMessage = data.message
+      data => {
+        this.emailMessage = data.message
+        this.available = data.available      
+      }
     );
   }
 

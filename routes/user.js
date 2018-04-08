@@ -29,12 +29,13 @@ router.post('/email-check', (req, res, next) => {
 			res.status(400).send({error: err.message});
 		}
 		if(user) {
-			res.json({message: "Email Is Not Available", available: false});
+			res.json({message: "Email Is Not Available Please Choose Another", available: false});
 		} else {
 			res.json({message: "Email Is Available", available: true});
 		}
 	});
 });
+
 
 
 // MAYBE WORKING!!!! Check In Angular!!!
@@ -48,9 +49,9 @@ router.post('/register', function(req, res, next) {
                 }
                 res.status(201).send(user);
             });
-          } else {
+      } else {
             res.status(500).json("Email Already Exists!");
-        }        
+        }           
     });    
 });
 
