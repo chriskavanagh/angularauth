@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from './../register.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +13,15 @@ export class RegisterComponent implements OnInit {
   emailMessage: string;
   available: boolean;
 
-  model = {
+  /* model = {
     email: undefined,
     password: undefined
-  };
+  }; */
+
+  user: User = {
+    email: undefined,
+    password: undefined
+  }
 
   constructor(private router: Router, private registerService: RegisterService) { }
 
@@ -23,7 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   signUpUser():void {
-    this.registerService.registerUser(this.model)
+    this.registerService.registerUser(this.user)
     .subscribe(
       data => console.log(data)
     );
@@ -31,7 +37,7 @@ export class RegisterComponent implements OnInit {
   }
 
   checkEmail():void {
-    this.registerService.checkUserEmail(this.model)
+    this.registerService.checkUserEmail(this.user)
     .subscribe(
       data => {
         this.emailMessage = data.message

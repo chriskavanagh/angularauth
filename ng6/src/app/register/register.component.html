@@ -12,9 +12,9 @@
           <form #userForm="ngForm" class="form">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" (keyup)="checkEmail()" [(ngModel)]="model.email" name="email" id="email" class="form-control rounded-0" required>
+              <input type="text" (keyup)="checkEmail()" [(ngModel)]="user.email" name="email" id="email" class="form-control rounded-0" required>
 
-              <div *ngIf="available">
+              <div *ngIf="available" [class.selected]="available === true">
                 <span class="text-success">{{ emailMessage }}</span>
               </div>
 
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
               <label>Password</label>
-              <input type="password" [(ngModel)]="model.password" name="password" id="password" class="form-control rounded-0" required>
+              <input type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control rounded-0" required>
             </div>
             <button type="button" (click)="signUpUser()" class="btn btn-primary btn-block">Register</button>
           </form>
