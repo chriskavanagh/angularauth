@@ -29,11 +29,11 @@ router.post('/email-check', (req, res, next) => {
 			res.status(400).send({error: err.message});
 		}
 		if(user) {
-			res.json({message: "Email Is Not Available Please Choose Another", available: false});
-		} else {
-			res.json({message: "Email Is Available", available: true});
-		}
-	});
+			res.json({message: "Email Is Not Available", available: false});
+      } else {
+            res.json({message: "Email Is Available", available: true});
+     }
+  });
 });
 
 

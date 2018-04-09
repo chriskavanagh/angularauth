@@ -462,8 +462,8 @@ var RegisterService = /** @class */ (function () {
     RegisterService.prototype.registerUser = function (user) {
         return this.http.post(this._url, user);
     };
-    RegisterService.prototype.checkUserEmail = function (email) {
-        return this.http.post(this._emailurl, email);
+    RegisterService.prototype.checkUserEmail = function (user) {
+        return this.http.post(this._emailurl, user);
     };
     RegisterService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -525,10 +525,6 @@ var RegisterComponent = /** @class */ (function () {
     function RegisterComponent(router, registerService) {
         this.router = router;
         this.registerService = registerService;
-        /* model = {
-          email: undefined,
-          password: undefined
-        }; */
         this.user = {
             email: undefined,
             password: undefined
@@ -555,7 +551,8 @@ var RegisterComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/register/register.component.html"),
             styles: [__webpack_require__("../../../../../src/app/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__register_service__["a" /* RegisterService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__register_service__["a" /* RegisterService */]])
     ], RegisterComponent);
     return RegisterComponent;
 }());

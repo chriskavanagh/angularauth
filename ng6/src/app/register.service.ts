@@ -19,8 +19,8 @@ export class RegisterService {
     return this.http.post<User>(this._url, user)    
   }
 
-  checkUserEmail(email: any): Observable<any> {
-    return this.http.post<any>(this. _emailurl, email)
+  checkUserEmail(user: User): Observable<any> {
+    return this.http.post<User>(this. _emailurl, user)
   }
 
   /* private handleError<T> (operation = 'operation', result?: T) {

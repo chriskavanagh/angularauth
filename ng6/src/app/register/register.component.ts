@@ -13,17 +13,16 @@ export class RegisterComponent implements OnInit {
   emailMessage: string;
   available: boolean;
 
-  /* model = {
-    email: undefined,
-    password: undefined
-  }; */
 
   user: User = {
     email: undefined,
     password: undefined
   }
 
-  constructor(private router: Router, private registerService: RegisterService) { }
+  constructor(
+    private router: Router,
+    private registerService: RegisterService
+  ) { }
 
   ngOnInit() {
   }
