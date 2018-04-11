@@ -456,11 +456,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var RegisterService = /** @class */ (function () {
     function RegisterService(http) {
         this.http = http;
-        this._url = 'http://localhost:4000/user/register';
+        this._registerurl = 'http://localhost:4000/user/register';
         this._emailurl = 'http://localhost:4000/user/email-check';
     }
     RegisterService.prototype.registerUser = function (user) {
-        return this.http.post(this._url, user);
+        return this.http.post(this._registerurl, user);
     };
     RegisterService.prototype.checkUserEmail = function (user) {
         return this.http.post(this._emailurl, user);
@@ -497,7 +497,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mx-auto text-warning\">Register</h3> <!-- or \"text-center\" instead of d-flex justify-content-center-->\n        </div>\n        <div class=\"card-body\">\n          <form #userForm=\"ngForm\" class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"email\">Email</label>\n              <input type=\"text\" (keyup)=\"checkEmail()\" [(ngModel)]=\"user.email\" name=\"email\" id=\"email\" class=\"form-control rounded-0\" required>\n\n              <div *ngIf=\"available\" [class.selected]=\"available === true\">\n                <span class=\"text-success\">{{ emailMessage }}</span>\n              </div>\n\n              <div *ngIf=\"!available\">\n                <span class=\"text-danger\">{{ emailMessage }}</span>\n              </div>\n\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" [(ngModel)]=\"user.password\" name=\"password\" id=\"password\" class=\"form-control rounded-0\" required>\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mx-auto text-warning\">Register</h3> <!-- or \"text-center\" instead of d-flex justify-content-center-->\n        </div>\n        <div class=\"card-body\">\n          <form #userForm=\"ngForm\" class=\"form\">              \n            <div class=\"form-group\">\n              <label for=\"email\">Email</label>\n\n              <input type=\"text\"\n                     (keyup)=\"checkEmail($event)\"\n                     [(ngModel)]=\"user.email\"\n                     name=\"email\"\n                     id=\"email\"\n                     #email=\"ngModel\"\n                     class=\"form-control rounded-0\"\n                     required>\n\n              <div *ngIf=\"available\" [class.selected]=\"available === true\">\n                <span class=\"text-success\">{{ emailMessage }}</span>\n              </div>\n\n              <div *ngIf=\"!available\" [class.selected]=\"available === false\">\n                <span class=\"text-danger\">{{ emailMessage }}</span>\n              </div>\n\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n\n              <input type=\"password\"\n                     [(ngModel)]=\"user.password\"\n                     name=\"password\"\n                     id=\"password\"\n                     #password=\"ngModel\"\n                     class=\"form-control rounded-0\"\n                     required>\n\n            </div>\n            <button type=\"button\" (click)=\"signUpUser()\" class=\"btn btn-primary btn-block\">Register</button>            \n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -525,6 +525,7 @@ var RegisterComponent = /** @class */ (function () {
     function RegisterComponent(router, registerService) {
         this.router = router;
         this.registerService = registerService;
+        // user class (../user.ts)
         this.user = {
             email: undefined,
             password: undefined
@@ -532,13 +533,18 @@ var RegisterComponent = /** @class */ (function () {
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
+    // register user using service
     RegisterComponent.prototype.signUpUser = function () {
         this.registerService.registerUser(this.user)
-            .subscribe(function (data) { return console.log(data); });
+            .subscribe(function (data) {
+            console.log(data);
+        });
         //this.router.navigate(['/ninjas']);
     };
-    RegisterComponent.prototype.checkEmail = function () {
+    // check if email is available during registration
+    RegisterComponent.prototype.checkEmail = function (event) {
         var _this = this;
+        console.log(event);
         this.registerService.checkUserEmail(this.user)
             .subscribe(function (data) {
             _this.emailMessage = data.message;

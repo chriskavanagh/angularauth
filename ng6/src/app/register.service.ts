@@ -8,20 +8,20 @@ import { User } from './user';
 @Injectable()
 export class RegisterService {
 
-  _url: string = 'http://localhost:4000/user/register';
-  _emailurl: string = 'http://localhost:4000/user/email-check';
+_registerurl: string = 'http://localhost:4000/user/register';
+_emailurl: string = 'http://localhost:4000/user/email-check';
 
 
-  constructor(public http: HttpClient) { }
+constructor(public http: HttpClient) { }
 
 
-  registerUser(user: User): Observable<User> {
-    return this.http.post<User>(this._url, user)    
-  }
+registerUser(user: User): Observable<User> {
+  return this.http.post<User>(this._registerurl, user)    
+}
 
-  checkUserEmail(user: User): Observable<any> {
-    return this.http.post<User>(this. _emailurl, user)
-  }
+checkUserEmail(user: User): Observable<any> {
+  return this.http.post<User>(this. _emailurl, user)
+}
 
   /* private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -30,7 +30,7 @@ export class RegisterService {
       console.error(error); // log to console instead
  
       // TODO: better job of transforming error for user consumption
-     // this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.message}`);
  
       // Let the app keep running by returning an empty result.
       return of(result as T);

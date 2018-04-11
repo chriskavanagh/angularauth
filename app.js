@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const jwt = require('jsonwebtoken');
 const expressValidator = require('express-validator');
 
 const session = require('express-session');

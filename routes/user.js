@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const User = require('../models/user.js');
@@ -37,9 +38,8 @@ router.post('/email-check', (req, res, next) => {
 });
 
 
-
-// MAYBE WORKING!!!! Check In Angular!!!
-router.post('/register', function(req, res, next) {
+/* route creates / registers user / creates jwttoken */
+router.post('/register', (req, res, next) => {
     let email = req.body.email;
     User.findOne({'email': email}, 'email', (err, user) => {
         if (!user) {
@@ -47,7 +47,9 @@ router.post('/register', function(req, res, next) {
                 if(err){
                     return res.status(500).json({error: err});
                 }
-                res.status(201).send(user);
+                let payload = {subject: user._id};
+                let token = jwt.sign(payload, 'secretKey');
+                res.status(201).send({token});
             });
       } else {
             res.status(500).json("Email Already Exists!");
@@ -56,8 +58,33 @@ router.post('/register', function(req, res, next) {
 });
 
 
-module.exports = router;
+router.post('/login', (req, res, next) => {
+    let userData = req.body;
+    User.findOne({'email': userData.email}, 'email password', (err, user) => {
+        if (err) {
+            console.log(err);
+      } else {
+            if (!user) {
+                res.status(401).send('Invalid Email');
+            } else {
+                user.verifyPassword(userData.password, (err, valid) => {
+                    if (err) {
+                        console.log(err);
+                    } else if (valid) {
+                        let payload = {subject: user._id};
+                        let token = jwt.sign(payload, 'secretKey');
+                        res.status(200).send({token});
+                    } else {
+                        res.send('User Not Verified!!!');
+                    }
+                });
+            }
+        }
+    });
+});
 
+
+module.exports = router;
 
 
 /* router.post('/register', function(req, res, next) {
@@ -79,17 +106,7 @@ module.exports = router;
     } else {
       console.log('Invalid (callback)');
     }
-  }); */
-
-
-/* router.post('/register', function(req, res, next) {
-    User.create({email: req.body.email, password: req.body.password},(err, user)=>{
-    if(err){
-        return res.status(500).json({error: err});
-    }
-    res.status(201).send(user);
-   });
-}); */ 
+  }); */ 
 
 
 // alternate way to create obj with constructor.
@@ -100,21 +117,3 @@ module.exports = router;
         res.status(201).send(user);
     });
 }); */
-
-
-// static method in UserSchema. (not used yet)
-/* User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
-    if (error || !user) {
-      var err = new Error('Wrong email or password.');
-      err.status = 401;
-      return next(err);
-    } else {
-      req.session.userId = user._id;
-      return res.redirect('/profile');
-    }
-  });
-} else {
-  var err = new Error('All fields required.');
-  err.status = 400;
-  return next(err);
-} */

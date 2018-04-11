@@ -10,10 +10,12 @@ import { User } from '../user';
 })
 export class RegisterComponent implements OnInit {
 
+  // messgae from server, email available, not available
   emailMessage: string;
+  // boolean from server if available or not
   available: boolean;
 
-
+  // user class (../user.ts)
   user: User = {
     email: undefined,
     password: undefined
@@ -27,15 +29,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  // register user using service
   signUpUser():void {
     this.registerService.registerUser(this.user)
     .subscribe(
-      data => console.log(data)
+      data => {
+        console.log(data)
+      }
     );
     //this.router.navigate(['/ninjas']);
   }
 
-  checkEmail():void {
+  // check if email is available during registration
+  checkEmail(event):void {
+    console.log(event)
     this.registerService.checkUserEmail(this.user)
     .subscribe(
       data => {
