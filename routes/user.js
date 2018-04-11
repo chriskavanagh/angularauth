@@ -58,6 +58,7 @@ router.post('/register', (req, res, next) => {
 });
 
 
+/* login route w/hashed password & jwt */
 router.post('/login', (req, res, next) => {
     let userData = req.body;
     User.findOne({'email': userData.email}, 'email password', (err, user) => {
