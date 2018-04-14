@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   // user class (../user.ts)
   user: User = {
     email: undefined,
-    password: undefined
+    password: undefined,
+    token: undefined
   }
 
   constructor(
@@ -34,10 +35,12 @@ export class RegisterComponent implements OnInit {
     this.registerService.registerUser(this.user)
     .subscribe(
       data => {
+        localStorage.setItem('token', data.token)
+        this.router.navigate(['/ninjas'])
         console.log(data)
-      }
+      },
+      err => console.log(err)
     );
-    //this.router.navigate(['/ninjas']);
   }
 
   // check if email is available during registration
@@ -48,7 +51,8 @@ export class RegisterComponent implements OnInit {
       data => {
         this.emailMessage = data.message
         this.available = data.available      
-      }
+      },
+      err => console.log(err)
     );
   }
 

@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Ninja = require('../models/ninja');
+const User = require('./user');
+// use "User.verifyToken" in routes. Imported from user.js
 
 
 

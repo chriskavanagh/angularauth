@@ -10,8 +10,26 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: false}));
 /* ---------------------- */
 
-/* route gets all user */
-router.get('/', function(req, res, next){
+
+function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+      return res.status(401).send('Unauthorized request');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if(token === 'null') {
+      return res.status(401).send('Unauthorized request');
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if(!payload) {
+      return res.status(401).send('Unauthorized request');    
+    }
+    req.userId = payload.subject;
+    next();
+  }
+
+
+/* route gets all user / route protected by verifyToken */
+router.get('/',verifyToken, (req, res, next) => {
     User.find({}, 'email', (err, users) => {
         if(err){
             res.json({err: err.message, msg:'Failed to find users'});
@@ -84,7 +102,7 @@ router.post('/login', (req, res, next) => {
     });
 });
 
-
+module.exports.verifyToken = verifyToken;
 module.exports = router;
 
 
