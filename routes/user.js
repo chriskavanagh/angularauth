@@ -66,7 +66,7 @@ router.post('/register', (req, res, next) => {
                     return res.status(500).json({error: err});
                 }
                 let payload = {subject: user._id};
-                let token = jwt.sign(payload, 'secretKey');
+                let token = jwt.sign(payload, 'secretKey',{expiresIn: '14 days'});
                 res.status(201).send({token});
             });
       } else {

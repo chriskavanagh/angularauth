@@ -18,7 +18,6 @@ export class NinjaComponent implements OnInit {
 
   constructor(
         public ninjasservice: NinjasService,
-        public _login: LoginService,
         public dataService: DataService,
         private router: Router
       ) { }

@@ -18,8 +18,7 @@ export class NinjandetailsComponent implements OnInit {
   constructor(
         private route: ActivatedRoute,
         public dataService: DataService,
-        private router: Router,
-        public _login: LoginService
+        private router: Router
       ) { }
 
   ngOnInit() {

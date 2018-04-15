@@ -331,7 +331,6 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         this._login.logoutUser();
-        //this._login.isAuthenticated();
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
@@ -450,8 +449,7 @@ module.exports = "<div class=\"container\">  \n\n  <div class=\"d-flex justify-c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ninjas_service__ = __webpack_require__("../../../../../src/app/services/ninjas.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -465,11 +463,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var NinjaComponent = /** @class */ (function () {
-    function NinjaComponent(ninjasservice, _login, dataService, router) {
+    function NinjaComponent(ninjasservice, dataService, router) {
         this.ninjasservice = ninjasservice;
-        this._login = _login;
         this.dataService = dataService;
         this.router = router;
     }
@@ -492,9 +488,8 @@ var NinjaComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/ninja/ninja.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_ninjas_service__["a" /* NinjasService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */],
             __WEBPACK_IMPORTED_MODULE_0__data_service__["a" /* DataService */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
     ], NinjaComponent);
     return NinjaComponent;
 }());
@@ -535,8 +530,7 @@ module.exports = "<div *ngIf=\"ninja\" class=\"d-flex justify-content-center\" i
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NinjandetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -549,14 +543,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 //import 'rxjs/add/operator/switchMap';
 var NinjandetailsComponent = /** @class */ (function () {
-    function NinjandetailsComponent(route, dataService, router, _login) {
+    function NinjandetailsComponent(route, dataService, router) {
         this.route = route;
         this.dataService = dataService;
         this.router = router;
-        this._login = _login;
     }
     NinjandetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -580,9 +572,8 @@ var NinjandetailsComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/ninjandetails/ninjandetails.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]])
+            __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], NinjandetailsComponent);
     return NinjandetailsComponent;
 }());
@@ -862,7 +853,6 @@ var SelectedComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth0_angular_jwt__ = __webpack_require__("../../../../@auth0/angular-jwt/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -875,16 +865,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var helper = new __WEBPACK_IMPORTED_MODULE_3__auth0_angular_jwt__["a" /* JwtHelperService */]();
+/* import { JwtHelperService } from '@auth0/angular-jwt';
+const helper = new JwtHelperService(); */
 var LoginService = /** @class */ (function () {
-    function LoginService(http, _router) {
-        this.http = http;
+    function LoginService(_http, _router) {
+        this._http = _http;
         this._router = _router;
         this._loginurl = 'http://localhost:4000/user/login';
     }
     LoginService.prototype.loginUser = function (user) {
-        return this.http.post(this._loginurl, user);
+        return this._http.post(this._loginurl, user);
     };
     LoginService.prototype.logoutUser = function () {
         localStorage.removeItem('token');
@@ -893,10 +883,10 @@ var LoginService = /** @class */ (function () {
     LoginService.prototype.getToken = function () {
         return localStorage.getItem('token');
     };
-    LoginService.prototype.isAuthenticated = function () {
-        var token = this.getToken();
-        return helper.isTokenExpired(token);
-    };
+    /* isAuthenticated(): boolean {
+      const token = this.getToken();
+      return helper.isTokenExpired(token);
+    } */
     LoginService.prototype.loggedIn = function () {
         return !!localStorage.getItem('token');
     };
@@ -1123,7 +1113,6 @@ module.exports = "<div class=\"container\">  \n\n  <div class=\"d-flex justify-c
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserlistComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__userlist_service__ = __webpack_require__("../../../../../src/app/userlist.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1135,11 +1124,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 var UserlistComponent = /** @class */ (function () {
-    function UserlistComponent(userlistService, _login) {
+    function UserlistComponent(userlistService) {
         this.userlistService = userlistService;
-        this._login = _login;
     }
     UserlistComponent.prototype.ngOnInit = function () {
         this.getUserList();
@@ -1154,7 +1141,7 @@ var UserlistComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/userlist/userlist.component.html"),
             styles: [__webpack_require__("../../../../../src/app/userlist/userlist.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__userlist_service__["a" /* UserlistService */], __WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__userlist_service__["a" /* UserlistService */]])
     ], UserlistComponent);
     return UserlistComponent;
 }());

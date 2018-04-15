@@ -11,7 +11,7 @@ import { User } from '../user';
 export class UserlistComponent implements OnInit {
   users: User[];
 
-  constructor(public userlistService: UserlistService, public _login: LoginService) { }
+  constructor(public userlistService: UserlistService) { }
 
   ngOnInit() {
     this.getUserList()

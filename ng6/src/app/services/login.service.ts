@@ -5,18 +5,18 @@ import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../user';
 
-import { JwtHelperService } from '@auth0/angular-jwt';
-const helper = new JwtHelperService();
+/* import { JwtHelperService } from '@auth0/angular-jwt';
+const helper = new JwtHelperService(); */
 
 @Injectable()
 export class LoginService {  
 
   _loginurl = 'http://localhost:4000/user/login';
 
-  constructor(private http: HttpClient, private _router: Router) { }
+  constructor(private _http: HttpClient, private _router: Router) { }
 
   loginUser(user: User) {
-    return this.http.post<any>(this._loginurl, user);
+    return this._http.post<any>(this._loginurl, user);
   }
 
   logoutUser():void {
