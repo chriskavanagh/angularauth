@@ -1,5 +1,6 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { User } from '../user';
@@ -18,19 +19,19 @@ export class LoginService {
     return this.http.post<any>(this._loginurl, user);
   }
 
-  logoutUser() {
+  logoutUser():void {
     localStorage.removeItem('token');
-    this._router.navigate(['/ninjas']);
+    this._router.navigate(['/login']);
   }
 
   getToken() {
     return localStorage.getItem('token');
   }
 
-  isAuthenticated(): boolean {
+  /* isAuthenticated(): boolean {
     const token = this.getToken();
     return helper.isTokenExpired(token);
-  }
+  } */
 
   loggedIn() {
     return !!localStorage.getItem('token');

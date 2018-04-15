@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
     token: undefined
   }
 
-  constructor(private _login: LoginService, private _router: Router) { }
+  constructor(public _login: LoginService, private _router: Router) { }
 
   ngOnInit() {
+    this._login.logoutUser();
   }
 
   loginUser():void {

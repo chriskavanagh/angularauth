@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item mx-4\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Login</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/register\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item mx-4\" *ngIf=\"!loginService.loggedIn()\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Login</a>\n      </li>\n      <li class=\"nav-item mx-4\" *ngIf=\"loginService.loggedIn()\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Logout</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/register\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
 
 /***/ }),
 
@@ -47,24 +47,31 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(loginService) {
+        this.loginService = loginService;
         this.title = 'app';
     }
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__services_login_service__["a" /* LoginService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -99,12 +106,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__userlist_userlist_component__ = __webpack_require__("../../../../../src/app/userlist/userlist.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__login_login_component__ = __webpack_require__("../../../../../src/app/login/login.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__interceptor__ = __webpack_require__("../../../../../src/app/interceptor.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__logout_logout_component__ = __webpack_require__("../../../../../src/app/logout/logout.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -149,7 +158,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_16__pagenotfound_pagenotfound_component__["a" /* PagenotfoundComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__register_register_component__["a" /* RegisterComponent */],
                 __WEBPACK_IMPORTED_MODULE_18__userlist_userlist_component__["a" /* UserlistComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__login_login_component__["a" /* LoginComponent */]
+                __WEBPACK_IMPORTED_MODULE_19__login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__logout_logout_component__["a" /* LogoutComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -320,6 +330,8 @@ var LoginComponent = /** @class */ (function () {
         };
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this._login.logoutUser();
+        //this._login.isAuthenticated();
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
@@ -338,6 +350,67 @@ var LoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__services_login_service__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/logout/logout.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/logout/logout.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  logout works!\n</p>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/logout/logout.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogoutComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LogoutComponent = /** @class */ (function () {
+    function LogoutComponent() {
+    }
+    LogoutComponent.prototype.ngOnInit = function () {
+    };
+    LogoutComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-logout',
+            template: __webpack_require__("../../../../../src/app/logout/logout.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/logout/logout.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LogoutComponent);
+    return LogoutComponent;
 }());
 
 
@@ -377,7 +450,8 @@ module.exports = "<div class=\"container\">  \n\n  <div class=\"d-flex justify-c
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_ninjas_service__ = __webpack_require__("../../../../../src/app/services/ninjas.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -391,9 +465,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var NinjaComponent = /** @class */ (function () {
-    function NinjaComponent(ninjasservice, dataService, router) {
+    function NinjaComponent(ninjasservice, _login, dataService, router) {
         this.ninjasservice = ninjasservice;
+        this._login = _login;
         this.dataService = dataService;
         this.router = router;
     }
@@ -416,8 +492,9 @@ var NinjaComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/ninja/ninja.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_ninjas_service__["a" /* NinjasService */],
+            __WEBPACK_IMPORTED_MODULE_3__services_login_service__["a" /* LoginService */],
             __WEBPACK_IMPORTED_MODULE_0__data_service__["a" /* DataService */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]])
     ], NinjaComponent);
     return NinjaComponent;
 }());
@@ -458,7 +535,8 @@ module.exports = "<div *ngIf=\"ninja\" class=\"d-flex justify-content-center\" i
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NinjandetailsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_service__ = __webpack_require__("../../../../../src/app/data.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -471,12 +549,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 //import 'rxjs/add/operator/switchMap';
 var NinjandetailsComponent = /** @class */ (function () {
-    function NinjandetailsComponent(route, dataService, router) {
+    function NinjandetailsComponent(route, dataService, router, _login) {
         this.route = route;
         this.dataService = dataService;
         this.router = router;
+        this._login = _login;
     }
     NinjandetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -500,8 +580,9 @@ var NinjandetailsComponent = /** @class */ (function () {
             styles: [__webpack_require__("../../../../../src/app/ninjandetails/ninjandetails.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */],
-            __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]])
     ], NinjandetailsComponent);
     return NinjandetailsComponent;
 }());
@@ -807,7 +888,7 @@ var LoginService = /** @class */ (function () {
     };
     LoginService.prototype.logoutUser = function () {
         localStorage.removeItem('token');
-        this._router.navigate(['/ninjas']);
+        this._router.navigate(['/login']);
     };
     LoginService.prototype.getToken = function () {
         return localStorage.getItem('token');
@@ -1042,6 +1123,7 @@ module.exports = "<div class=\"container\">  \n\n  <div class=\"d-flex justify-c
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserlistComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__userlist_service__ = __webpack_require__("../../../../../src/app/userlist.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_login_service__ = __webpack_require__("../../../../../src/app/services/login.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1053,9 +1135,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var UserlistComponent = /** @class */ (function () {
-    function UserlistComponent(userlistService) {
+    function UserlistComponent(userlistService, _login) {
         this.userlistService = userlistService;
+        this._login = _login;
     }
     UserlistComponent.prototype.ngOnInit = function () {
         this.getUserList();
@@ -1070,7 +1154,7 @@ var UserlistComponent = /** @class */ (function () {
             template: __webpack_require__("../../../../../src/app/userlist/userlist.component.html"),
             styles: [__webpack_require__("../../../../../src/app/userlist/userlist.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__userlist_service__["a" /* UserlistService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__userlist_service__["a" /* UserlistService */], __WEBPACK_IMPORTED_MODULE_2__services_login_service__["a" /* LoginService */]])
     ], UserlistComponent);
     return UserlistComponent;
 }());

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { LoginService } from './../services/login.service';
 import { DataService } from './../data.service';
 import { Ininja } from './../ininja';
 //import 'rxjs/add/operator/switchMap';
@@ -17,7 +18,8 @@ export class NinjandetailsComponent implements OnInit {
   constructor(
         private route: ActivatedRoute,
         public dataService: DataService,
-        private router: Router
+        private router: Router,
+        public _login: LoginService
       ) { }
 
   ngOnInit() {

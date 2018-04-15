@@ -1,6 +1,7 @@
 import { DataService } from './../data.service';
 import { Component, OnInit } from '@angular/core';
 import { NinjasService } from './../services/ninjas.service';
+import { LoginService } from './../services/login.service';
 import { Router } from '@angular/router';
 import { Ininja } from './../ininja';
 
@@ -17,6 +18,7 @@ export class NinjaComponent implements OnInit {
 
   constructor(
         public ninjasservice: NinjasService,
+        public _login: LoginService,
         public dataService: DataService,
         private router: Router
       ) { }

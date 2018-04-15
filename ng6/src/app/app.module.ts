@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { LoginComponent } from './login/login.component';
 import { Interceptor } from './interceptor';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes =  [
@@ -43,7 +44,8 @@ const routes: Routes =  [
     PagenotfoundComponent,
     RegisterComponent,
     UserlistComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
