@@ -1,10 +1,8 @@
+import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpResponse } from '@angular/common/http';
-
 import { Router } from '@angular/router';
 import { User } from '../user';
-
 /* import { JwtHelperService } from '@auth0/angular-jwt';
 const helper = new JwtHelperService(); */
 
@@ -33,7 +31,7 @@ export class LoginService {
     return helper.isTokenExpired(token);
   } */
 
-  loggedIn() {
+  loggedIn():boolean {
     return !!localStorage.getItem('token');
   }
 

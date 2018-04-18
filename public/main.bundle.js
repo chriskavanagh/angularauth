@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item mx-4\" *ngIf=\"!loginService.loggedIn()\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Login</a>\n      </li>\n      <li class=\"nav-item mx-4\" *ngIf=\"loginService.loggedIn()\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Logout</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/register\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>\n  \n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n          aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" routerLink=\"/\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li *ngIf=\"!loginService.loggedIn()\" class=\"nav-item mx-4\">\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Login</a>\n      </li>\n      <li *ngIf=\"loginService.loggedIn()\" (click)=\"loginService.logoutUser()\" class=\"nav-item mx-4\"><!--do this vishwas way-->\n        <a class=\"nav-link\" routerLink=\"/login\" routerLinkActive=\"active\">Logout</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/register\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
 
 /***/ }),
 
@@ -65,6 +65,7 @@ var AppComponent = /** @class */ (function () {
         this.loginService = loginService;
         this.title = 'app';
     }
+    AppComponent.prototype.ngOnInit = function () { };
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
             selector: 'app-root',
@@ -76,6 +77,7 @@ var AppComponent = /** @class */ (function () {
     return AppComponent;
 }());
 
+// loginservice used in template to show 'Login' or 'Logout' button.
 
 
 /***/ }),
@@ -295,7 +297,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>\n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-success float-right\">Login</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>\n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-success float-right\">Login</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -330,7 +332,7 @@ var LoginComponent = /** @class */ (function () {
         };
     }
     LoginComponent.prototype.ngOnInit = function () {
-        this._login.logoutUser();
+        //this._login.logoutUser();
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
@@ -850,8 +852,8 @@ var SelectedComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__("../../../common/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -891,8 +893,8 @@ var LoginService = /** @class */ (function () {
         return !!localStorage.getItem('token');
     };
     LoginService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], LoginService);
     return LoginService;
 }());

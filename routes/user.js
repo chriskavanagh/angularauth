@@ -89,7 +89,7 @@ router.post('/login', (req, res, next) => {
                 user.verifyPassword(userData.password, (err, valid) => {
                     if (err) {
                         console.log(err);
-                    } else if (valid) {
+                    } else if (valid) {      
                         let payload = {subject: user._id};
                         let token = jwt.sign(payload, 'secretKey',{expiresIn: '7 days'});
                         res.status(200).send({token});

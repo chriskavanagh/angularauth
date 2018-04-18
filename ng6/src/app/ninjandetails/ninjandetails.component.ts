@@ -21,7 +21,7 @@ export class NinjandetailsComponent implements OnInit {
         private router: Router
       ) { }
 
-  ngOnInit() {
+  ngOnInit():void {
       this.dataService.currentNinja.subscribe(
         (data) => {this.ninja = data}
       );

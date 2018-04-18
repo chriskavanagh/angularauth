@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(public _login: LoginService, private _router: Router) { }
 
   ngOnInit() {
-    this._login.logoutUser();
+    //this._login.logoutUser();
   }
 
   loginUser():void {

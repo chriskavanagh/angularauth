@@ -1,8 +1,11 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">NG5 Angular Project</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -10,10 +13,10 @@
       <li class="nav-item active mx-4">
         <a class="nav-link" routerLink="/" routerLinkActive="active">Ninja List <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item mx-4" *ngIf="!loginService.loggedIn()">
+      <li *ngIf="!loginService.loggedIn()" class="nav-item mx-4">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
-      <li class="nav-item mx-4" *ngIf="loginService.loggedIn()">
+      <li *ngIf="loginService.loggedIn()" (click)="loginService.logoutUser()" class="nav-item mx-4"><!--do this vishwas way-->
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Logout</a>
       </li>
     <li class="nav-item mx-4">
