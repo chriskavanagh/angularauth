@@ -1,7 +1,10 @@
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+//import { tokenGetter } from './../app.module';
+//const helper = new JwtHelperService();
 
 @Component({
   selector: 'app-login',
@@ -10,16 +13,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  returnUrl: string;
+
   user: User = {
     email: undefined,
     password: undefined,
     token: undefined
   }
 
-  constructor(public _login: LoginService, private _router: Router) { }
+  constructor(public _login: LoginService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    //this._login.logoutUser();
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
+    console.log(this.returnUrl)
   }
 
   loginUser():void {
@@ -27,7 +33,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data => {
         localStorage.setItem('token', data.token)
-        this._router.navigate(['/ninjas'])
+        this._router.navigateByUrl(this.returnUrl)
       },
       err => console.log(err)
     )

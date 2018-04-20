@@ -6,6 +6,7 @@ import { NinjasService } from './services/ninjas.service';
 import { SingleService } from './services/single.service';
 import { RegisterService } from './register.service';
 import { LoginService } from './services/login.service';
+import { AuthGuard } from './auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -21,18 +22,22 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { LoginComponent } from './login/login.component';
 import { Interceptor } from './interceptor';
 import { LogoutComponent } from './logout/logout.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
+// from JWTModule https://github.com/auth0/angular2-jwt
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 const routes: Routes =  [
-  {path:'ninjas', component: NinjaComponent},
-  {path:'users', component: UserlistComponent},
+  {path:'ninjas', component: NinjaComponent, canActivate: [AuthGuard]},
+  {path:'users', component: UserlistComponent, canActivate: [AuthGuard]},
   {path:'ninja-detail/:name', component: NinjandetailsComponent},
   {path:'login', component: LoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'', redirectTo: '/ninjas', pathMatch: 'full'},
   {path:'**', component:PagenotfoundComponent}
 ];
-
 
 @NgModule({
   declarations: [
@@ -50,6 +55,11 @@ const routes: Routes =  [
   imports: [
     BrowserModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter: tokenGetter,
+      }
+    }),
     FormsModule,
     RouterModule.forRoot(routes,{ enableTracing: true })
   ],
@@ -64,7 +74,8 @@ const routes: Routes =  [
       DataService, 
       RegisterService,
       LoginService,
-      UserlistService
+      UserlistService,
+      AuthGuard      
       ],
   bootstrap: [AppComponent]
 })

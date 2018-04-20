@@ -16,7 +16,7 @@
       <li *ngIf="!loginService.loggedIn()" class="nav-item mx-4">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
       </li>
-      <li *ngIf="loginService.loggedIn()" (click)="loginService.logoutUser()" class="nav-item mx-4"><!--do this vishwas way-->
+      <li *ngIf="loginService.loggedIn()" (click)="loginService.logoutUser()" class="nav-item mx-4">
         <a class="nav-link" routerLink="/login" routerLinkActive="active">Logout</a>
       </li>
     <li class="nav-item mx-4">

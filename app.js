@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 var upperCaseFirst = require('upper-case-first');
 const path = require('path');
 
-const exphbs  = require('express-handlebars');
+//const exphbs  = require('express-handlebars');
 const routes = require('./routes/api');
 
 const userRoutes = require('./routes/user');
@@ -75,8 +75,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 /*- set express-handlebars as template engine.-*/
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+//app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+//app.set('view engine', 'handlebars');
 /* -------------------------- */
 
 

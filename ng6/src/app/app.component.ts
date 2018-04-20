@@ -10,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'app';
 
+  // loginservice.loggedIn() used in template to show 'Login' or 'Logout' button.
   constructor(public loginService: LoginService) { }
 
   ngOnInit(){ }
+
+  
     
   }
-  // loginservice used in template to show 'Login' or 'Logout' button.
+  
