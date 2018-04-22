@@ -21,12 +21,12 @@ export class NinjandetailsComponent implements OnInit {
         private router: Router
       ) { }
 
-  ngOnInit():void {
+  ngOnInit() {
       this.dataService.currentNinja.subscribe(
         (data) => {this.ninja = data}
       );
-      //let name = this.route.snapshot.paramMap.get('name');
-      //this.ninjaName = name;
+      // let name = this.route.snapshot.paramMap.get('name');
+      // this.ninjaName = name;
       this.route.paramMap.subscribe(
         (params: ParamMap) => {
         let name = params.get('name');

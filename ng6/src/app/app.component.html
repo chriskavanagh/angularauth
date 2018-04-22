@@ -11,19 +11,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active mx-4">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">Ninja List <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/']" routerLinkActive="active">Ninja List <span class="sr-only"></span></a>
       </li>
       <li *ngIf="!loginService.loggedIn()" class="nav-item mx-4">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
       </li>
       <li *ngIf="loginService.loggedIn()" (click)="loginService.logoutUser()" class="nav-item mx-4">
-        <a class="nav-link" routerLink="/login" routerLinkActive="active">Logout</a>
+        <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Logout</a>
       </li>
     <li class="nav-item mx-4">
-      <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+      <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
     </li>
     <li class="nav-item mx-4">
-      <a class="nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+      <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">Users</a>
     </li>
   </ul>
     

@@ -10,7 +10,7 @@ const helper = new JwtHelperService();
 export class LoginService {  
 
   _loginurl = 'http://localhost:4000/user/login';
-  redirectUrl: string;
+  
 
   constructor(
       private _http: HttpClient,

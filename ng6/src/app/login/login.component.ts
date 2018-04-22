@@ -2,7 +2,7 @@ import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { LoginService } from './../services/login.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 //import { tokenGetter } from './../app.module';
 //const helper = new JwtHelperService();
 
@@ -21,19 +21,29 @@ export class LoginComponent implements OnInit {
     token: undefined
   }
 
-  constructor(public _login: LoginService, private _router: Router, private _route: ActivatedRoute) { }
+  constructor(
+        public _login: LoginService,
+        private _router: Router,
+        private _route: ActivatedRoute
+       ) { }
+
 
   ngOnInit() {
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
-    console.log(this.returnUrl)
+    //queryParams from auth.guard, url before user logs in.
+    //this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/'; // or subscribe to queryParams.
+    this._route.queryParams.subscribe((params: ParamMap) => {
+      this.returnUrl = params['returnUrl'];
+    });
   }
+
 
   loginUser():void {
     this._login.loginUser(this.user)
     .subscribe(
       data => {
-        localStorage.setItem('token', data.token)
-        this._router.navigateByUrl(this.returnUrl)
+        localStorage.setItem('token', data.token);
+        // from loginservice, return user to original url.
+        this._router.navigateByUrl(this.returnUrl); 
       },
       err => console.log(err)
     )
