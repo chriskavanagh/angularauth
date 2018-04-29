@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { Interceptor } from './interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { TechscrollComponent } from './techscroll/techscroll.component';
 
 // from JWTModule https://github.com/auth0/angular2-jwt
 export function tokenGetter() {
@@ -34,6 +35,7 @@ const routes: Routes =  [
   {path:'users', component: UserlistComponent, canActivate: [AuthGuard]},
   {path:'ninja-detail/:name', component: NinjandetailsComponent},
   {path:'login', component: LoginComponent},
+  {path:'tech', component: TechscrollComponent},
   {path:'register', component: RegisterComponent},
   {path:'', redirectTo: '/ninjas', pathMatch: 'full'},
   {path:'**', component:PagenotfoundComponent}
@@ -50,7 +52,8 @@ const routes: Routes =  [
     RegisterComponent,
     UserlistComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    TechscrollComponent
   ],
   imports: [
     BrowserModule,

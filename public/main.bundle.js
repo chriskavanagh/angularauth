@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>\n  \n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n          aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/']\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\"></span></a>\n      </li>\n      <li *ngIf=\"!loginService.loggedIn()\" class=\"nav-item mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/login']\" routerLinkActive=\"active\">Login</a>\n      </li>\n      <li *ngIf=\"loginService.loggedIn()\" (click)=\"loginService.logoutUser()\" class=\"nav-item mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/login']\" routerLinkActive=\"active\">Logout</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" [routerLink]=\"['/register']\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" [routerLink]=\"['/users']\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<nav class=\"navbar navbar-expand-lg navbar-dark bg-primary\">\n  <a class=\"navbar-brand\" href=\"#\">NG5 Angular Project</a>    \n  <a class=\"navbar-brand\" routerLink=\"/tech\" routerLinkActive=\"active\">Tech</a>\n    \n  \n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\"\n          data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\"\n          aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item active mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/']\" routerLinkActive=\"active\">Ninja List <span class=\"sr-only\"></span></a>\n      </li>\n      <li *ngIf=\"!loginService.loggedIn()\" class=\"nav-item mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/login']\" routerLinkActive=\"active\">Login</a>\n      </li>\n      <li *ngIf=\"loginService.loggedIn()\" (click)=\"loginService.logoutUser()\" class=\"nav-item mx-4\">\n        <a class=\"nav-link\" [routerLink]=\"['/login']\" routerLinkActive=\"active\">Logout</a>\n      </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" [routerLink]=\"['/register']\" routerLinkActive=\"active\">Register</a>\n    </li>\n    <li class=\"nav-item mx-4\">\n      <a class=\"nav-link\" [routerLink]=\"['/users']\" routerLinkActive=\"active\">Users</a>\n    </li>\n  </ul>\n    \n    <!--<form class=\"form-inline my-2 my-lg-0\">\n      <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      <button class=\"btn btn-outline-default my-2 my-sm-0\" type=\"submit\">Search</button>\n    </form>-->\n  \n  </div>\n</nav>\n\n  <router-outlet></router-outlet>\n  \n\n  <!--<app-selected></app-selected>-->\n"
 
 /***/ }),
 
@@ -112,12 +112,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__interceptor__ = __webpack_require__("../../../../../src/app/interceptor.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__logout_logout_component__ = __webpack_require__("../../../../../src/app/logout/logout.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__auth0_angular_jwt__ = __webpack_require__("../../../../@auth0/angular-jwt/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__techscroll_techscroll_component__ = __webpack_require__("../../../../../src/app/techscroll/techscroll.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -151,6 +153,7 @@ var routes = [
     { path: 'users', component: __WEBPACK_IMPORTED_MODULE_19__userlist_userlist_component__["a" /* UserlistComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_8__auth_guard__["a" /* AuthGuard */]] },
     { path: 'ninja-detail/:name', component: __WEBPACK_IMPORTED_MODULE_14__ninjandetails_ninjandetails_component__["a" /* NinjandetailsComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_20__login_login_component__["a" /* LoginComponent */] },
+    { path: 'tech', component: __WEBPACK_IMPORTED_MODULE_24__techscroll_techscroll_component__["a" /* TechscrollComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_18__register_register_component__["a" /* RegisterComponent */] },
     { path: '', redirectTo: '/ninjas', pathMatch: 'full' },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_17__pagenotfound_pagenotfound_component__["a" /* PagenotfoundComponent */] }
@@ -170,7 +173,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_18__register_register_component__["a" /* RegisterComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__userlist_userlist_component__["a" /* UserlistComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_22__logout_logout_component__["a" /* LogoutComponent */]
+                __WEBPACK_IMPORTED_MODULE_22__logout_logout_component__["a" /* LogoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__techscroll_techscroll_component__["a" /* TechscrollComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
@@ -401,7 +405,6 @@ var LoginComponent = /** @class */ (function () {
         //this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/'; // or subscribe to queryParams.
         this._route.queryParams.subscribe(function (params) {
             _this.returnUrl = params['returnUrl'];
-            console.log("I am the queryparams!!" + _this.returnUrl);
         });
     };
     LoginComponent.prototype.loginUser = function () {
@@ -499,7 +502,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n  }\r\n  \r\n  ul>li {\r\n      margin-bottom: 5px;\r\n      color: #003366;\r\n  }\r\n  \r\n  .zoom {\r\n    background-color: #BEBEBE;\r\n    -webkit-transition: -webkit-transform .2s;\r\n    transition: -webkit-transform .2s;\r\n    transition: transform .2s;\r\n    transition: transform .2s, -webkit-transform .2s; /* Animation */    \r\n    /*margin: 0 auto;*/\r\n}\r\n  \r\n  .zoom:hover {\r\n    -webkit-transform: scale(1.2);\r\n            transform: scale(1.2);\r\n}\r\n  \r\n  .row {\r\n    margin-bottom:75px;\r\n}\r\n  \r\n  #head {\r\n    margin-top: 50px;\r\n}\r\n  \r\n  hr {\r\n    margin-bottom: 75px;\r\n}", ""]);
+exports.push([module.i, "ul {\r\n    list-style-type: none;\r\n  }\r\n  \r\n  ul>li {\r\n      margin-bottom: 5px;\r\n      color: #003366;\r\n  }\r\n  \r\n  .zoom {\r\n    background-color: #BEBEBE;\r\n    -webkit-transition: -webkit-transform .2s;\r\n    transition: -webkit-transform .2s;\r\n    transition: transform .2s;\r\n    transition: transform .2s, -webkit-transform .2s; /* Animation */    \r\n    /*margin: 0 auto;*/\r\n}\r\n  \r\n  .zoom:hover {\r\n    -webkit-transform: scale(1.2);\r\n            transform: scale(1.2);\r\n}\r\n  \r\n  .row {\r\n    margin-bottom:75px;\r\n}\r\n  \r\n  #head {\r\n    margin-top: 50px;\r\n}\r\n  \r\n  hr {\r\n    margin-bottom: 75px;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -581,7 +584,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#topPage {\r\n    margin: 75px 0;\r\n}\r\n\r\n#bottomPage {\r\n    margin: 75px 0;\r\n}\r\n\r\n.zoom {\r\n    padding: 10px;\r\n    background-color: #BEBEBE;\r\n    -webkit-transition: -webkit-transform .2s;\r\n    transition: -webkit-transform .2s;\r\n    transition: transform .2s;\r\n    transition: transform .2s, -webkit-transform .2s; /* Animation */ \r\n    margin: 0 auto;   \r\n}\r\n\r\n.zoom:hover {\r\n    -webkit-transform: scale(1.2);\r\n            transform: scale(1.2);\r\n}\r\n\r\n#ninjaName {\r\n    margin-bottom: 45px;\r\n}\r\n\r\n#zoomDiv {\r\n    margin-top: 15px;\r\n}\r\n\r\n#zoomDiv a {\r\n    color: #003366;\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "#topPage {\r\n    margin: 75px 0;\r\n}\r\n\r\n#bottomPage {\r\n    margin: 75px 0;\r\n}\r\n\r\n.zoom {\r\n    padding: 10px;\r\n    background-color: #BEBEBE;\r\n    -webkit-transition: -webkit-transform .2s;\r\n    transition: -webkit-transform .2s;\r\n    transition: transform .2s;\r\n    transition: transform .2s, -webkit-transform .2s; /* Animation */ \r\n    margin: 0 auto;   \r\n}\r\n\r\n.zoom:hover {\r\n    -webkit-transform: scale(1.2);\r\n            transform: scale(1.2);\r\n}\r\n\r\n#ninjaName {\r\n    margin-bottom: 45px;\r\n}\r\n\r\n#zoomDiv {\r\n    margin-top: 15px;\r\n}\r\n\r\n#zoomDiv a {\r\n    color: #003366;\r\n}\r\n\r\n.material-icons.md-40{\r\n    font-size: 40px;\r\n    display: inline-block;\r\n    position: relative;\r\n    top: 7px;\r\n    left: 6px;\r\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -594,7 +597,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/ninjandetails/ninjandetails.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"ninja\" class=\"d-flex justify-content-center\" id=\"topPage\">\n    <h1>Ninjadetails Component</h1>\n</div>\n<div id=\"bottomPage\">\n    <div class=\"d-flex flex-column align-items-center\">\n        <h1 id=\"ninjaName\">My Name Is {{ ninjaName }}</h1>      \n        <h3>You selected Ninja with name {{ ninja.name }} </h3>      \n        <h3>{{ ninja.name }} is a {{ ninja.rank }}</h3>\n        \n        <div id=\"zoomDiv\" class=\"zoom\">\n            <a (click)=\"goToNinjas()\" >Back To Ninja List</a>\n        <!--<a [routerLink]=\"['/']\" class=\"zoom\">Back To Ninja List</a>-->\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div *ngIf=\"ninja\" class=\"d-flex justify-content-center\" id=\"topPage\">\n    <h1>Ninjadetails Component</h1>\n    <div>\n        <i class=\"material-icons md-40\">face</i>\n    </div>\n    \n</div>\n<div id=\"bottomPage\">\n    <div class=\"d-flex flex-column align-items-center\">\n        <h1 id=\"ninjaName\">My Name Is {{ ninjaName }}</h1>      \n        <h3>You selected Ninja with name {{ ninja.name }} </h3>      \n        <h3>{{ ninja.name }} is a {{ ninja.rank }}</h3>\n        \n        <div id=\"zoomDiv\" class=\"zoom\">\n            <a (click)=\"goToNinjas()\" >Back To Ninja List</a>\n        <!--<a [routerLink]=\"['/']\" class=\"zoom\">Back To Ninja List</a>-->\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -1115,6 +1118,67 @@ var SingleComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_single_service__["a" /* SingleService */]])
     ], SingleComponent);
     return SingleComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/techscroll/techscroll.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "body{\r\n    margin-top:70px;\r\n    font-size:16px;\r\n  }\r\n  \r\n  h1,h2,h3,h4,h5,h6{\r\n    font-family:Poppins;\r\n  }\r\n  \r\n  p{\r\n    font-family:Roboto;\r\n  }\r\n  \r\n  .navbar-default{\r\n    background:#fff;\r\n    border:0;\r\n    font-family:Poppins;\r\n  }\r\n  \r\n  .navbar-brand{\r\n    font-size:20px;\r\n    color:#000 !important;\r\n    font-weight:bold;\r\n  }\r\n  \r\n  #showcase h1{\r\n    font-size:50px;\r\n    margin-bottom:20px;\r\n  }\r\n  \r\n  #showcase img{\r\n    width:90%;\r\n    margin-left:60px;\r\n  }\r\n  \r\n  #showcase .showcase-right{\r\n    margin-top:90px;\r\n  }\r\n  \r\n  #testimonial{\r\n    background:#f1f1f1;\r\n    padding: 50px 0 30px 0;\r\n    text-align:center;\r\n    margin-top:40px;\r\n  }\r\n  \r\n  #testimonial p{\r\n    font-size:32px;\r\n    font-family: 'Josefin Sans';\r\n    color:#000;\r\n  }\r\n  \r\n  #testimonial p.customer{\r\n    font-size:20px;\r\n    color:#666;\r\n  }\r\n  \r\n  #info1 .info-right{\r\n    margin-top:90px;\r\n  }\r\n  \r\n  #info2{\r\n    margin:20px 0 60px 0;\r\n  }\r\n  \r\n  /* #contact{\r\n    background:url(../img/image3.png);\r\n    padding:40px;\r\n    color:#fff;\r\n    border-top:#333 7px solid;\r\n    border-bottom:#333 7px solid;\r\n  } */\r\n  \r\n  footer{\r\n    padding:30px;\r\n  }\r\n  ", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/techscroll/techscroll.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>TechScroll</title>\n    <link href=\"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500\" rel=\"stylesheet\" type=\"text/css\">\n    <script src=\"https://unpkg.com/scrollreveal/dist/scrollreveal.min.js\"></script>\n  </head>\n  <body>\n    \n\n    <section id=\"showcase\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-left\">\n              <img src=\"/assets/img/image1.jpg\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-right\">\n              <h1>Hands-free help from the Google Assistant</h1>\n              <p>Google Home voice-activated speaker.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n            <br>\n            <a class=\"btn btn-default btn-lg showcase-btn\">Read More</a>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"testimonial\">\n      <div class=\"container\">\n        <p>\"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\"</p>\n        <p class=\"customer\">- John Doe</p>\n      </div>\n    </section>\n\n    <section id=\"info1\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\">\n              <img src=\"/assets/img/image2.png\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\">\n              <h2>Get To Know Google Home</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n              <br>\n              <a class=\"btn btn-default btn-lg\">Read More</a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <hr>\n    <section id=\"info2\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\">\n              <h2>Info Block One</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\">\n              <h2>Info Block Two</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"contact\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-5 col-sm-5\">\n            <form>\n              <div class=\"form-group\">\n                <label>Name: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Name\">\n              </div>\n              <div class=\"form-group\">\n                <label>Email: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Email\">\n              </div>\n              <div class=\"form-group\">\n                <label>Message: </label>\n                <textarea class=\"form-control\" name=\"\" value=\"\" placeholder=\"Enter Message\"></textarea>\n              </div>\n              <button class=\"btn btn-default\">Submit</button>\n            </form>\n          </div>\n          <div class=\"col-md-7 col-sm-7\">\n\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <footer>\n      <p class=\"text-center\">TechScroll Copyright &copy; 2017</p>\n    </footer>\n\n    <script\n  src=\"https://code.jquery.com/jquery-3.2.1.js\"\n  integrity=\"sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=\"\n  crossorigin=\"anonymous\"></script>\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>\n\n    <script>\n        window.sr = ScrollReveal();\n        sr.reveal('.navbar', {\n          duration: 2000,\n          origin:'bottom'\n        });\n        sr.reveal('.showcase-left', {\n          duration: 2000,\n          origin:'top',\n          distance:'300px'\n        });\n        sr.reveal('.showcase-right', {\n          duration: 2000,\n          origin:'right',\n          distance:'300px'\n        });\n        sr.reveal('.showcase-btn', {\n          duration: 2000,\n          delay: 2000,\n          origin:'bottom'\n        });\n        sr.reveal('#testimonial div', {\n          duration: 2000,\n          origin:'bottom'\n        });\n        sr.reveal('.info-left', {\n          duration: 2000,\n          origin:'left',\n          distance:'300px',\n          viewFactor: 0.2\n        });\n        sr.reveal('.info-right', {\n          duration: 2000,\n          origin:'right',\n          distance:'300px',\n          viewFactor: 0.2\n        });\n    </script>\n\n    <script>\n    $(function() {\n      // Smooth Scrolling\n      $('a[href*=\"#\"]:not([href=\"#\"])').click(function() {\n        if (location.pathname.replace(/^\\//,'') == this.pathname.replace(/^\\//,'') && location.hostname == this.hostname) {\n          var target = $(this.hash);\n          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');\n          if (target.length) {\n            $('html, body').animate({\n              scrollTop: target.offset().top\n            }, 1000);\n            return false;\n          }\n        }\n      });\n    });\n    </script>\n  </body>\n</html>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/techscroll/techscroll.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TechscrollComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var TechscrollComponent = /** @class */ (function () {
+    function TechscrollComponent() {
+    }
+    TechscrollComponent.prototype.ngOnInit = function () {
+    };
+    TechscrollComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+            selector: 'app-techscroll',
+            template: __webpack_require__("../../../../../src/app/techscroll/techscroll.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/techscroll/techscroll.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], TechscrollComponent);
+    return TechscrollComponent;
 }());
 
 

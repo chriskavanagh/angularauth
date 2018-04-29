@@ -28,3 +28,11 @@
     color: #003366;
 }
 
+.material-icons.md-40{
+    font-size: 40px;
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    left: 6px;
+}
+
