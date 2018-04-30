@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import  *  as $ from 'jquery';
+import {NgsRevealModule} from 'ng-scrollreveal';
 
 @Component({
   selector: 'app-techscroll',
@@ -10,6 +12,13 @@ export class TechscrollComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
+      $(document).ready(function(){
+        $("p.footer").click(function(){
+          alert("Hello world!");
+        });
+      });
+      
   }
 
 }

@@ -1,0 +1,13 @@
+.tech-link{
+    color: #D2691E;
+    font-weight: 900;
+  }
+
+  a.nav-link{
+    color: #B0C4DE !important;
+    font-weight: 900 !important;
+  }
+
+  a.nav-link:hover{
+    color: #D2691E !important;
+  }

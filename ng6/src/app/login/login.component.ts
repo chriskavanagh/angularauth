@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     //queryParams from auth.guard, url before user logs in.
-    //this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/'; // or subscribe to queryParams.
-    this._route.queryParams.subscribe((params: ParamMap) => {
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/'; // or subscribe to queryParams.
+    /* this._route.queryParams.subscribe((params: ParamMap) => {
       this.returnUrl = params['returnUrl'];
-    });
+    }); */
   }
 
 

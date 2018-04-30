@@ -24,6 +24,7 @@ import { Interceptor } from './interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TechscrollComponent } from './techscroll/techscroll.component';
+import {NgsRevealModule} from 'ng-scrollreveal';
 
 // from JWTModule https://github.com/auth0/angular2-jwt
 export function tokenGetter() {
@@ -58,6 +59,7 @@ const routes: Routes =  [
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgsRevealModule.forRoot(),
     JwtModule.forRoot({
       config:{
         tokenGetter: tokenGetter,

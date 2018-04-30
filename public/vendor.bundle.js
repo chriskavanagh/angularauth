@@ -368,6 +368,430 @@ function toComment(sourceMap) {
 
 /***/ }),
 
+/***/ "../../../../ng-scrollreveal/directives/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_directive__ = __webpack_require__("../../../../ng-scrollreveal/directives/ngs-reveal.directive.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_directive__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_set_directive__ = __webpack_require__("../../../../ng-scrollreveal/directives/ngs-reveal-set.directive.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_set_directive__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngs_reveal_common_directive__ = __webpack_require__("../../../../ng-scrollreveal/directives/ngs-reveal-common.directive.js");
+/* unused harmony namespace reexport */
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/directives/ngs-reveal-common.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AbstractNgsRevealDirective; });
+/**
+ * Base directive class shared by the concrete ScrollReveal directives.
+ */
+var AbstractNgsRevealDirective = (function () {
+    function AbstractNgsRevealDirective(ngsRevealService) {
+        this.ngsRevealService = ngsRevealService;
+    }
+    AbstractNgsRevealDirective.prototype._initConfig = function (value) {
+        if (value && typeof value === 'string') {
+            this.config = JSON.parse(value);
+        }
+        else if (value && typeof value === 'object') {
+            this.config = value;
+        }
+    };
+    return AbstractNgsRevealDirective;
+}());
+//# sourceMappingURL=ngs-reveal-common.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/directives/ngs-reveal-set.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgsRevealSetDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ngs_reveal_service__ = __webpack_require__("../../../../ng-scrollreveal/services/ngs-reveal.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngs_reveal_common_directive__ = __webpack_require__("../../../../ng-scrollreveal/directives/ngs-reveal-common.directive.js");
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+
+
+
+/**
+ * Directive to add 'ScrollReveal' functionality to a <b>set of DOM elements</b> (identify via the `[ngsSelector]` attribute) in the page.
+ * This directive is meant to be placed on the <b>parent node</b> that contains the child elements to reveal.
+ * You can optionally add the `[ngsInterval]` attribute to reveal items sequentially, following the given interval(in milliseconds).
+ * You can optionally add the `[ngsSync]` attribute to reveal new child elements that may have been added in the parent node asynchronously.
+ *
+ */
+var NgsRevealSetDirective = (function (_super) {
+    __extends(NgsRevealSetDirective, _super);
+    function NgsRevealSetDirective(elementRef, ngsRevealService) {
+        _super.call(this, ngsRevealService);
+        this.elementRef = elementRef;
+    }
+    Object.defineProperty(NgsRevealSetDirective.prototype, "_config", {
+        /**
+         * Custom configuration to use when revealing this set of elements
+         */
+        set: function (value) {
+            this._initConfig(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    NgsRevealSetDirective.prototype.ngOnInit = function () {
+        if (!this.ngsSelector && console) {
+            var item = this.elementRef.nativeElement ? this.elementRef.nativeElement.className : '';
+            console.error("[ng-scrollreveal] You must set \"[ngsSelector]\" attribute on item '" + item + "' when using \"ngsRevealSet\"");
+            return;
+        }
+        this.ngsRevealService.revealSet(this.elementRef, this.ngsSelector, this.ngsInterval, this.config);
+    };
+    NgsRevealSetDirective.prototype.ngOnChanges = function (changes) {
+        var ngsSyncProp = 'ngsSync';
+        if (ngsSyncProp in changes
+            && !changes[ngsSyncProp].isFirstChange()
+            && !changes[ngsSyncProp].currentValue()) {
+            this.ngsRevealService.sync();
+        }
+    };
+    NgsRevealSetDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["s" /* Directive */], args: [{
+                    selector: '[ngsRevealSet]'
+                },] },
+    ];
+    /** @nocollapse */
+    NgsRevealSetDirective.ctorParameters = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__services_ngs_reveal_service__["a" /* NgsRevealService */], },
+    ];
+    NgsRevealSetDirective.propDecorators = {
+        '_config': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */], args: ['ngsRevealSet',] },],
+        'ngsSelector': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */] },],
+        'ngsInterval': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */] },],
+        'ngsSync': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */] },],
+    };
+    return NgsRevealSetDirective;
+}(__WEBPACK_IMPORTED_MODULE_2__ngs_reveal_common_directive__["a" /* AbstractNgsRevealDirective */]));
+//# sourceMappingURL=ngs-reveal-set.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/directives/ngs-reveal.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgsRevealDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_ngs_reveal_service__ = __webpack_require__("../../../../ng-scrollreveal/services/ngs-reveal.service.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngs_reveal_common_directive__ = __webpack_require__("../../../../ng-scrollreveal/directives/ngs-reveal-common.directive.js");
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+
+
+
+/**
+ * Directive to add 'ScrollReveal' functionality to a <b>single DOM element</b> in the page.
+ */
+var NgsRevealDirective = (function (_super) {
+    __extends(NgsRevealDirective, _super);
+    function NgsRevealDirective(elementRef, ngsRevealService) {
+        _super.call(this, ngsRevealService);
+        this.elementRef = elementRef;
+        this.visibility = 'hidden';
+    }
+    Object.defineProperty(NgsRevealDirective.prototype, "_config", {
+        /**
+         * Custom configuration to use when revealing this element
+         */
+        set: function (value) {
+            this._initConfig(value);
+        },
+        enumerable: true,
+        configurable: true
+    });
+    NgsRevealDirective.prototype.ngOnInit = function () {
+        this.ngsRevealService.reveal(this.elementRef, this.config);
+    };
+    NgsRevealDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["s" /* Directive */], args: [{
+                    selector: '[ngsReveal]'
+                },] },
+    ];
+    /** @nocollapse */
+    NgsRevealDirective.ctorParameters = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_1__services_ngs_reveal_service__["a" /* NgsRevealService */], },
+    ];
+    NgsRevealDirective.propDecorators = {
+        'visibility': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* HostBinding */], args: ['style.visibility',] },],
+        '_config': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */], args: ['ngsReveal',] },],
+    };
+    return NgsRevealDirective;
+}(__WEBPACK_IMPORTED_MODULE_2__ngs_reveal_common_directive__["a" /* AbstractNgsRevealDirective */]));
+//# sourceMappingURL=ngs-reveal.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_module__ = __webpack_require__("../../../../ng-scrollreveal/ngs-reveal.module.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_module__["a"]; });
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/ngs-reveal.module.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgsRevealModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__("../../../common/esm5/common.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_index__ = __webpack_require__("../../../../ng-scrollreveal/services/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_index__ = __webpack_require__("../../../../ng-scrollreveal/directives/index.js");
+/* unused harmony reexport WindowService */
+/* unused harmony reexport NgsRevealService */
+/* unused harmony reexport NgsRevealConfig */
+/* unused harmony reexport NgsRevealDirective */
+/* unused harmony reexport NgsRevealSetDirective */
+
+
+
+
+
+
+/**
+ * Main module of the library
+ */
+var NgsRevealModule = (function () {
+    function NgsRevealModule() {
+    }
+    NgsRevealModule.forRoot = function () {
+        return {
+            ngModule: NgsRevealModule,
+            providers: [__WEBPACK_IMPORTED_MODULE_2__services_index__["c" /* WindowService */], __WEBPACK_IMPORTED_MODULE_2__services_index__["b" /* NgsRevealService */], __WEBPACK_IMPORTED_MODULE_2__services_index__["a" /* NgsRevealConfig */]]
+        };
+    };
+    NgsRevealModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */], args: [{
+                    imports: [
+                        __WEBPACK_IMPORTED_MODULE_1__angular_common__["b" /* CommonModule */]
+                    ],
+                    exports: [__WEBPACK_IMPORTED_MODULE_3__directives_index__["a" /* NgsRevealDirective */], __WEBPACK_IMPORTED_MODULE_3__directives_index__["b" /* NgsRevealSetDirective */]],
+                    declarations: [__WEBPACK_IMPORTED_MODULE_3__directives_index__["a" /* NgsRevealDirective */], __WEBPACK_IMPORTED_MODULE_3__directives_index__["b" /* NgsRevealSetDirective */]]
+                },] },
+    ];
+    /** @nocollapse */
+    NgsRevealModule.ctorParameters = [];
+    return NgsRevealModule;
+}());
+//# sourceMappingURL=ngs-reveal.module.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/services/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_service__ = __webpack_require__("../../../../ng-scrollreveal/services/ngs-reveal.service.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__ngs_reveal_service__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_config__ = __webpack_require__("../../../../ng-scrollreveal/services/ngs-reveal-config.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_config__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__window_service__ = __webpack_require__("../../../../ng-scrollreveal/services/window.service.js");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_2__window_service__["a"]; });
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/services/ngs-reveal-config.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgsRevealConfig; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+
+/**
+ * Configuration service for the NgScrollReveal directives.
+ * You can inject this service, typically in your root component, and customize the values of its properties in
+ * order to provide default values for all the ngsReveal directives used in the application.
+ */
+var NgsRevealConfig = (function () {
+    function NgsRevealConfig() {
+        // 'bottom', 'left', 'top', 'right'
+        this.origin = 'bottom';
+        // Can be any valid CSS distance, e.g. '5rem', '10%', '20vw', etc.
+        this.distance = '20px';
+        // Time in milliseconds.
+        this.duration = 500;
+        this.delay = 0;
+        // Starting angles in degrees, will transition from these values to 0 in all axes.
+        this.rotate = { x: 0, y: 0, z: 0 };
+        // Starting opacity value, before transitioning to the computed opacity.
+        this.opacity = 0;
+        // Starting scale value, will transition from this value to 1
+        this.scale = 0.9;
+        // Accepts any valid CSS easing, e.g. 'ease', 'ease-in-out', 'linear', etc.
+        this.easing = 'cubic-bezier(0.6, 0.2, 0.1, 1)';
+        // true/false to control reveal animations on mobile.
+        this.mobile = true;
+        // true:  reveals occur every time elements become visible
+        // false: reveals occur once as elements become visible
+        this.reset = false;
+        // 'always' — delay for all reveal animations
+        // 'once'   — delay only the first time reveals occur
+        // 'onload' - delay only for animations triggered by first load
+        this.useDelay = 'always';
+        // Change when an element is considered in the viewport. The default value
+        // of 0.20 means 20% of an element must be visible for its reveal to occur.
+        this.viewFactor = 0.2;
+        // Pixel values that alter the container boundaries.
+        // e.g. Set `{ top: 48 }`, if you have a 48px tall fixed toolbar.
+        // --
+        // Visual Aid: https://scrollrevealjs.org/assets/viewoffset.png
+        this.viewOffset = { top: 0, right: 0, bottom: 0, left: 0 };
+    }
+    NgsRevealConfig.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    NgsRevealConfig.ctorParameters = [];
+    return NgsRevealConfig;
+}());
+//# sourceMappingURL=ngs-reveal-config.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/services/ngs-reveal.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgsRevealService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_config__ = __webpack_require__("../../../../ng-scrollreveal/services/ngs-reveal-config.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__window_service__ = __webpack_require__("../../../../ng-scrollreveal/services/window.service.js");
+
+
+
+/**
+ * Service to inject in directives to use ScrollReveal JS.
+ * It delegates the work to SR, when DOM manipulation is possible (i.e app is not running in a web worker for e.g).
+ * If not possible, most methods simply do nothing, as DOM elements are not available anyway.
+ */
+var NgsRevealService = (function () {
+    function NgsRevealService(config, windowService) {
+        this.config = config;
+        this.windowService = windowService;
+        this.window = windowService.nativeWindow;
+        if (this.window) {
+            // init the scrollReveal library with injected config
+            var srConfig = Object.assign({}, config || {});
+            this.sr = ScrollReveal(srConfig);
+        }
+    }
+    /**
+     * Method to reveal a single DOM element.
+     * @param elementRef  a reference to the element to reveal
+     * @param config      (optional) custom configuration to use when revealing this element
+     */
+    NgsRevealService.prototype.reveal = function (elementRef, config) {
+        if (!this.window) {
+            return null;
+        }
+        return elementRef.nativeElement ?
+            this.sr.reveal(elementRef.nativeElement, config) : this.sr;
+    };
+    /**
+     * Method to reveal a set of DOM elements.
+     * @param parentElementRef  the parent DOM element encaspulating the child elements to reveal
+     * @param selector          a list of CSS selectors (comma-separated) that identifies child elements to reveal
+     * @param interval          (optional) interval in milliseconds, to animate child elemnts sequentially
+     * @param config            (optional) custom configuration to use when revealing this set of elements
+     */
+    NgsRevealService.prototype.revealSet = function (parentElementRef, selector, interval, config) {
+        if (!this.window) {
+            return null;
+        }
+        return parentElementRef.nativeElement ?
+            this.sr.reveal(selector, config, interval) : this.sr;
+    };
+    /**
+     * Method to synchronize and consider newly added child elements (for e.g when child elements were added asynchronously to parent DOM) .
+     */
+    NgsRevealService.prototype.sync = function () {
+        if (this.window) {
+            this.sr.sync();
+        }
+    };
+    NgsRevealService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    NgsRevealService.ctorParameters = [
+        { type: __WEBPACK_IMPORTED_MODULE_1__ngs_reveal_config__["a" /* NgsRevealConfig */], },
+        { type: __WEBPACK_IMPORTED_MODULE_2__window_service__["a" /* WindowService */], },
+    ];
+    return NgsRevealService;
+}());
+//# sourceMappingURL=ngs-reveal.service.js.map
+
+/***/ }),
+
+/***/ "../../../../ng-scrollreveal/services/window.service.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WindowService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+
+/**
+ * Service to interact with the window object.
+ */
+var WindowService = (function () {
+    function WindowService() {
+    }
+    Object.defineProperty(WindowService.prototype, "nativeWindow", {
+        get: function () {
+            return _window();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    WindowService.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */] },
+    ];
+    /** @nocollapse */
+    WindowService.ctorParameters = [];
+    return WindowService;
+}());
+function _window() {
+    // Return the global native browser window object
+    return typeof window !== 'undefined' ? window : undefined;
+}
+//# sourceMappingURL=window.service.js.map
+
+/***/ }),
+
 /***/ "../../../../punycode/punycode.js":
 /***/ (function(module, exports, __webpack_require__) {
 
