@@ -14,10 +14,10 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   returnUrl: string;
-  validForm: boolean;
+  //validForm: boolean;
   message: string;
   messageClass: any;
-  success: boolean;
+  //success: boolean;
 
 
   user: User = {
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
 
   loginUser():void {
-    this.validForm = true;
+    //this.validForm = true;
     this._login.loginUser(this.user)
     .subscribe(
       data => {
@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         }         
       },
       err => {
-            this.success = false;
+            //this.success = false;
             console.log(err);
       }
     )
