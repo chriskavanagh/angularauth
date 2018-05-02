@@ -14,6 +14,11 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   returnUrl: string;
+  validForm: boolean;
+  message: string;
+  messageClass: any;
+  success: boolean;
+
 
   user: User = {
     email: undefined,
@@ -38,15 +43,28 @@ export class LoginComponent implements OnInit {
 
 
   loginUser():void {
+    this.validForm = true;
     this._login.loginUser(this.user)
     .subscribe(
       data => {
-        localStorage.setItem('token', data.token);
-        // from loginservice, return user to original url.
-        this._router.navigateByUrl(this.returnUrl); 
+        if(!data.success) {
+            //this.success = false;
+            this.messageClass = 'alert alert-danger';
+            this.message = data.message;
+        }else{
+            //this.success = true;
+            localStorage.setItem('token', data.token);
+            this.message = data.message;
+            console.log(this.message);
+            // from loginservice, return user to original url.
+            this._router.navigateByUrl(this.returnUrl);
+        }         
       },
-      err => console.log(err)
+      err => {
+            this.success = false;
+            console.log(err);
+      }
     )
   }
 
-}
+} // end class

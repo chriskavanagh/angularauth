@@ -10174,7 +10174,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "#loginMessage {\r\n    margin-top: 5px;\r\n}", ""]);
 
 // exports
 
@@ -10187,7 +10187,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>\n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-primary btn-block\">Login</button>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>              \n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-primary btn-block\">Login</button>\n            <div id=\"loginMessage\" *ngIf=\"message\" [class]=messageClass>{{ message }}</div>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -10233,12 +10233,26 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
+        this.validForm = true;
         this._login.loginUser(this.user)
             .subscribe(function (data) {
-            localStorage.setItem('token', data.token);
-            // from loginservice, return user to original url.
-            _this._router.navigateByUrl(_this.returnUrl);
-        }, function (err) { return console.log(err); });
+            if (!data.success) {
+                _this.success = false;
+                _this.messageClass = 'alert alert-danger';
+                _this.message = data.message;
+            }
+            else {
+                _this.success = true;
+                localStorage.setItem('token', data.token);
+                _this.message = data.message;
+                console.log(_this.message);
+                // from loginservice, return user to original url.
+                _this._router.navigateByUrl(_this.returnUrl);
+            }
+        }, function (err) {
+            _this.success = false;
+            console.log(err);
+        });
     };
     LoginComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
@@ -10251,7 +10265,7 @@ var LoginComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
     ], LoginComponent);
     return LoginComponent;
-}());
+}()); // end class
 
 
 
@@ -10969,7 +10983,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/techscroll/techscroll.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>TechScroll</title>\n    <!--<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">-->\n    <link href=\"https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto%7CJosefin+Sans:100,300,400,500\" rel=\"stylesheet\" type=\"text/css\">\n    \n  </head>\n  <body>\n    \n\n    <section id=\"showcase\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-left\" [ngsReveal]=\"{duration: 2000, origin:'top', distance:'300px'}\">\n              <img src=\"/assets/img/image1.jpg\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-right\" [ngsReveal]=\"{duration: 2000, origin:'right', distance:'300px'}\">\n              <h1>Hands-free help from the Google Assistant</h1>\n              <p>Google Home voice-activated speaker.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n            <br>\n            <a class=\"btn btn-outline-secondary btn-lg showcase-btn\" [ngsReveal]=\"{duration: 2000, origin:'bottom', delay: 1000}\">Read More</a>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"testimonial\">\n      <div class=\"container\">\n        <p>\"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\"</p>\n        <p class=\"customer\">- John Doe</p>\n      </div>\n    </section>\n\n    <section id=\"info1\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\" [ngsReveal]=\"{duration: 2000, origin:'left', distance:'300px', viewFactor: 0.3}\">\n              <img src=\"/assets/img/image2.png\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\" [ngsReveal]=\"{duration: 2000, origin:'right', distance:'300px', viewFactor: 0.2}\">\n              <h2>Get To Know Google Home</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n              <br>\n              <a class=\"btn btn-outline-secondary btn-lg\" [ngsReveal]=\"{duration: 2000, origin:'bottom', delay: 1000}\">Read More</a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <hr>\n    <section id=\"info2\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\">\n              <h2>Info Block One</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\">\n              <h2>Info Block Two</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"contact\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-5 col-sm-5\">\n            <form>\n              <div class=\"form-group\">\n                <label>Name: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Name\">\n              </div>\n              <div class=\"form-group\">\n                <label>Email: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Email\">\n              </div>\n              <div class=\"form-group\">\n                <label>Message: </label>\n                <textarea class=\"form-control\" name=\"\" value=\"\" placeholder=\"Enter Message\"></textarea>\n              </div>\n              <button class=\"btn btn-default\">Submit</button>\n            </form>\n          </div>\n          <div class=\"col-md-7 col-sm-7\">\n\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <footer>\n      <p class=\"footer text-center\">TechScroll Copyright &copy; 2017</p>\n    </footer>\n    \n  </body>\n</html>"
+module.exports = "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>TechScroll</title>\n    <!--<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">-->\n    \n    \n  </head>\n  <body>\n    \n\n    <section id=\"showcase\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-left\" [ngsReveal]=\"{duration: 2000, origin:'top', distance:'300px'}\">\n              <img src=\"/assets/img/image1.jpg\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"showcase-right\" [ngsReveal]=\"{duration: 2000, origin:'right', distance:'300px'}\">\n              <h1>Hands-free help from the Google Assistant</h1>\n              <p>Google Home voice-activated speaker.consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n            <br>\n            <a class=\"btn btn-outline-secondary btn-lg showcase-btn\" [ngsReveal]=\"{duration: 2000, origin:'bottom', delay: 1000}\">Read More</a>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"testimonial\" [ngsReveal]=\"{duration: 2000, origin:'bottom'}\">\n      <div class=\"container\">\n        <p>\"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud\"</p>\n        <p class=\"customer\">- John Doe</p>\n      </div>\n    </section>\n\n    <section id=\"info1\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\" [ngsReveal]=\"{duration: 2000, origin:'left', distance:'300px', viewFactor: 0.3}\">\n              <img src=\"/assets/img/image2.png\">\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\" [ngsReveal]=\"{duration: 2000, origin:'right', distance:'300px', viewFactor: 0.2}\">\n              <h2>Get To Know Google Home</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n              <br>\n              <a class=\"btn btn-outline-secondary btn-lg\" [ngsReveal]=\"{duration: 2000, origin:'bottom', delay: 1000}\">Read More</a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n    <hr>\n    <section id=\"info2\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-left\">\n              <h2>Info Block One</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n          <div class=\"col-md-6 col-sm-6\">\n            <div class=\"info-right\">\n              <h2>Info Block Two</h2>\n              <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>\n            </div>\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <section id=\"contact\">\n      <div class=\"container\">\n        <div class=\"row\">\n          <div class=\"col-md-5 col-sm-5\">\n            <form>\n              <div class=\"form-group\">\n                <label>Name: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Name\">\n              </div>\n              <div class=\"form-group\">\n                <label>Email: </label>\n                <input class=\"form-control\" type=\"text\" name=\"\" value=\"\" placeholder=\"Enter Email\">\n              </div>\n              <div class=\"form-group\">\n                <label>Message: </label>\n                <textarea class=\"form-control\" name=\"\" value=\"\" placeholder=\"Enter Message\"></textarea>\n              </div>\n              <button class=\"btn btn-default\">Submit</button>\n            </form>\n          </div>\n          <div class=\"col-md-7 col-sm-7\">\n\n          </div>\n        </div>\n      </div>\n    </section>\n\n    <footer>\n      <p class=\"footer text-center\">TechScroll Copyright &copy; 2017</p>\n    </footer>\n    \n  </body>\n</html>"
 
 /***/ }),
 
@@ -10992,6 +11006,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+//import $ from "jquery";
 var TechscrollComponent = /** @class */ (function () {
     function TechscrollComponent() {
     }

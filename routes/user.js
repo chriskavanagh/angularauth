@@ -84,17 +84,18 @@ router.post('/login', (req, res, next) => {
             console.log(err);
       } else {
             if (!user) {
-                res.status(401).send('Invalid Email');
+                res.status(401).json({message: "Invalid Email"});
             } else {
                 user.verifyPassword(userData.password, (err, valid) => {
-                    if (err) {
-                        console.log(err);
-                    } else if (valid) {      
+                    if (!valid) {
+                        res.json({success: false, message: "Invalid Email or Password!", available: false});                     
+                    } else if (valid) {
                         let payload = {subject: user._id};
                         let token = jwt.sign(payload, 'secretKey',{expiresIn: '7 days'});
-                        res.status(200).send({token});
-                    } else {
-                        res.send('User Not Verified!!!');
+                        //res.status(200).send({token});
+                        res.status(200).json({token: token, success: true});
+                    } else if (err) {
+                        console.log(err);
                     }
                 });
             }

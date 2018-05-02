@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  *  as $ from 'jquery';
 import {NgsRevealModule} from 'ng-scrollreveal';
+//import $ from "jquery";
 
 @Component({
   selector: 'app-techscroll',
