@@ -19,5 +19,5 @@ const UserSchema = new Schema({
 
 
 
-UserSchema.plugin(require('mongoose-bcrypt')); // from mongoos-bcrypt docs
+UserSchema.plugin(require('mongoose-bcrypt')); // from mongoose-bcrypt docs
 module.exports = mongoose.model('User', UserSchema);

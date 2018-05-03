@@ -10187,7 +10187,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>              \n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-primary btn-block\">Login</button>\n            <div id=\"loginMessage\" *ngIf=\"message\" [class]=messageClass>{{ message }}</div>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"py-5\">\n  <div class=\"row\">\n    <div class=\"col-md-6 mx-auto\">\n      <span class=\"anchor\" id=\"formLogin\"></span>\n\n      <!-- form card login -->\n      <div class=\"card rounded-0\">\n        <div class=\"card-header d-flex justify-content-center\">\n          <h3 class=\"mb-0\">Login</h3>\n        </div>\n        <div class=\"card-body\">\n          <form class=\"form\">\n            <div class=\"form-group\">\n              <label for=\"uname1\">Username</label>\n              <input type=\"text\" class=\"form-control rounded-0\" [(ngModel)]=\"user.email\" name=\"email\" required>\n            </div>\n            <div class=\"form-group\">\n              <label>Password</label>\n              <input type=\"password\" class=\"form-control rounded-0\" [(ngModel)]=\"user.password\" name=\"password\" required>              \n            </div>\n            <button type=\"button\" (click)=\"loginUser()\" class=\"btn btn-primary btn-block\">Login</button>\n            <div *ngIf=\"message\" id=\"loginMessage\" [class]=messageClass>{{ message }}</div>\n          </form>\n        </div>\n        <!--/card-block-->\n      </div>\n      <!-- /form card login -->\n\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -10218,6 +10218,7 @@ var LoginComponent = /** @class */ (function () {
         this._login = _login;
         this._router = _router;
         this._route = _route;
+        //success: boolean;
         this.user = {
             email: undefined,
             password: undefined,
@@ -10233,16 +10234,16 @@ var LoginComponent = /** @class */ (function () {
     };
     LoginComponent.prototype.loginUser = function () {
         var _this = this;
-        this.validForm = true;
+        //this.validForm = true;
         this._login.loginUser(this.user)
             .subscribe(function (data) {
             if (!data.success) {
-                _this.success = false;
-                _this.messageClass = 'alert alert-danger';
+                //this.success = false;
+                _this.messageClass = 'alert alert-danger text-center';
                 _this.message = data.message;
             }
             else {
-                _this.success = true;
+                //this.success = true;
                 localStorage.setItem('token', data.token);
                 _this.message = data.message;
                 console.log(_this.message);
@@ -10250,7 +10251,7 @@ var LoginComponent = /** @class */ (function () {
                 _this._router.navigateByUrl(_this.returnUrl);
             }
         }, function (err) {
-            _this.success = false;
+            //this.success = false;
             console.log(err);
         });
     };

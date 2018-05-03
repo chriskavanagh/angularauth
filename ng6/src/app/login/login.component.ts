@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       data => {
         if(!data.success) {
             //this.success = false;
-            this.messageClass = 'alert alert-danger';
+            this.messageClass = 'alert alert-danger text-center';
             this.message = data.message;
         }else{
             //this.success = true;
