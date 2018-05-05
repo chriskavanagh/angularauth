@@ -10253,6 +10253,8 @@ var LoginComponent = /** @class */ (function () {
         }, function (err) {
             //this.success = false;
             console.log(err);
+            _this.messageClass = 'alert alert-danger text-center';
+            _this.message = "Invalid Email";
         });
     };
     LoginComponent = __decorate([

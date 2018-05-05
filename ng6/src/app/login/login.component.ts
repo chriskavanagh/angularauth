@@ -63,6 +63,8 @@ export class LoginComponent implements OnInit {
       err => {
             //this.success = false;
             console.log(err);
+            this.messageClass = 'alert alert-danger text-center';
+            this.message = "Invalid Email";
       }
     )
   }
