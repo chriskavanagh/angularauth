@@ -1,13 +1,16 @@
-.tech-link{
-    color: #D2691E;
+#tech-link{
+    color: #D2691E !important;
     font-weight: 900;
+    display: inline-block;
+    padding-left: 20px;
   }
 
   a.nav-link{
     color: #B0C4DE !important;
-    font-weight: 900 !important;
-  }
+    font-weight: 900 !important;    
+    text-decoration: none;      
+    }
 
-  a.nav-link:hover{
-    color: #D2691E !important;
+  a.nav-link:hover{    
+    background-color:#D2691E  !important;    
   }

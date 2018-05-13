@@ -56,7 +56,7 @@ router.post('/email-check', (req, res, next) => {
 });
 
 
-/* route creates / registers user / creates jwttoken */
+/* route creates / registers user / creates jwttoken/ password hashed in user.js */
 router.post('/register', (req, res, next) => {
     let email = req.body.email;
     User.findOne({'email': email}, 'email', (err, user) => {
